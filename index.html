@@ -37,7 +37,7 @@
       font-size: 0.9rem;
     }
     .highlight {
-      color: #004080; /* 파란색으로 변경 */
+      color: #004080; /* 파란색 */
       font-weight: bold;
     }
     .logo {
@@ -63,6 +63,25 @@
     .store-links a:hover {
       background-color: #00264d;
     }
+
+    /* 📌 반응형 YouTube embed */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 ratio */
+      height: 0;
+      overflow: hidden;
+      margin: 40px 0;
+      border-radius: 10px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
   </style>
 </head>
 <body>
@@ -71,6 +90,7 @@
     <h1>CEglobal</h1>
     <p>All your membership points and coupons in one simple app</p>
   </header>
+
   <main>
     <section>
       <h2>About the App</h2>
@@ -78,6 +98,18 @@
       <p><strong>Pachira – Points&Coupons</strong> is a fast and lightweight app that lets you manage <span class="highlight">loyalty & reward cards, coupons, and e-gift cards</span> <span class="highlight">with just one tap</span>, without sign-up.</p>
       <p class="highlight">Free</p>
       <p>No personal data collection / No registration required</p>
+    </section>
+
+    <!-- ⭐ 반응형 YouTube 영상 -->
+    <section>
+      <h2>App Preview</h2>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube.com/embed/HmvIis6DmIs"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
     </section>
 
     <section>
@@ -93,10 +125,12 @@
       <p>Email: <a href="mailto:pointegiftapp@gmail.com">pointegiftapp@gmail.com</a></p>
     </section>
   </main>
+
   <footer>
     &copy; 2025 CEglobal. All rights reserved.
   </footer>
 </body>
 </html>
+
 
 
