@@ -64,7 +64,7 @@
     .store-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.5rem;
       align-items: center;
       justify-content: center;
     }
@@ -72,12 +72,11 @@
       display: inline-block;
       margin: 0.5rem;
       padding: 0;
-      background-color: transparent;
       text-decoration: none;
-      border-radius: 0;
     }
     .store-links img {
-      height: 60px;
+      width: 200px;      /* ⭐ 두 배지 가로 길이 통일 */
+      height: auto;      /* 세로는 비율 맞춰 자동 조정됨 */
       display: block;
     }
 
@@ -133,7 +132,7 @@
     <section>
       <h2>Download</h2>
       <div class="store-links">
-        <!-- ANDROID: Google Play 배지 + 클릭 추적 -->
+        <!-- ANDROID -->
         <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" 
            target="_blank"
            onclick="gtag('event', 'download_android', { 'send_to': 'AW-17736987455', 'value': 1 });">
@@ -142,7 +141,7 @@
             alt="Get it on Google Play">
         </a>
 
-        <!-- IOS: App Store 배지 + 클릭 추적 -->
+        <!-- IOS -->
         <a href="https://apps.apple.com/us/app/id6751176799" 
            target="_blank"
            onclick="gtag('event', 'download_ios', { 'send_to': 'AW-17736987455', 'value': 1 });">
@@ -164,6 +163,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
