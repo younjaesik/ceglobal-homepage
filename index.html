@@ -60,18 +60,25 @@
       display: block;
       margin: 0 auto;
     }
+
+    .store-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
     .store-links a {
       display: inline-block;
       margin: 0.5rem;
-      padding: 0.75rem 1.25rem;
-      background-color: #004080;
-      color: white;
+      padding: 0;
+      background-color: transparent;
       text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
+      border-radius: 0;
     }
-    .store-links a:hover {
-      background-color: #00264d;
+    .store-links img {
+      height: 60px;
+      display: block;
     }
 
     .video-container {
@@ -126,18 +133,22 @@
     <section>
       <h2>Download</h2>
       <div class="store-links">
-        <!-- ANDROID CLICK TRACKING -->
+        <!-- ANDROID: Google Play 배지 + 클릭 추적 -->
         <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" 
            target="_blank"
            onclick="gtag('event', 'download_android', { 'send_to': 'AW-17736987455', 'value': 1 });">
-           Google Play
+          <img 
+            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+            alt="Get it on Google Play">
         </a>
 
-        <!-- IOS CLICK TRACKING -->
+        <!-- IOS: App Store 배지 + 클릭 추적 -->
         <a href="https://apps.apple.com/us/app/id6751176799" 
            target="_blank"
            onclick="gtag('event', 'download_ios', { 'send_to': 'AW-17736987455', 'value': 1 });">
-           App Store (iOS)
+          <img 
+            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+            alt="Download on the App Store">
         </a>
       </div>
     </section>
@@ -153,6 +164,8 @@
   </footer>
 </body>
 </html>
+
+
 
 
 
