@@ -14,6 +14,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CEglobal | Pachira - Points&Coupons</title>
+
   <style>
     body {
       font-family: "Arial", sans-serif;
@@ -61,6 +62,7 @@
       margin: 0 auto;
     }
 
+    /* ⭐ 공식 스토어 배지 정렬 */
     .store-links {
       display: flex;
       flex-wrap: wrap;
@@ -69,15 +71,13 @@
       justify-content: center;
     }
     .store-links a {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0;
       text-decoration: none;
     }
-    .store-links img {
-      width: 200px;      /* ⭐ 두 배지 가로 길이 통일 */
-      height: auto;      /* 세로는 비율 맞춰 자동 조정됨 */
-      display: block;
+    .badge-google {
+      height: 60px;   /* 구글 배지 */
+    }
+    .badge-apple {
+      height: 52px;   /* 애플 배지 */
     }
 
     .video-container {
@@ -99,6 +99,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <img src="ceglobal.jpg" alt="CEglobal Logo" class="logo">
@@ -132,23 +133,27 @@
     <section>
       <h2>Download</h2>
       <div class="store-links">
+
         <!-- ANDROID -->
-        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" 
+        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
            target="_blank"
            onclick="gtag('event', 'download_android', { 'send_to': 'AW-17736987455', 'value': 1 });">
           <img 
-            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+            class="badge-google"
+            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
             alt="Get it on Google Play">
         </a>
 
         <!-- IOS -->
-        <a href="https://apps.apple.com/us/app/id6751176799" 
+        <a href="https://apps.apple.com/us/app/id6751176799"
            target="_blank"
            onclick="gtag('event', 'download_ios', { 'send_to': 'AW-17736987455', 'value': 1 });">
           <img 
+            class="badge-apple"
             src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
             alt="Download on the App Store">
         </a>
+
       </div>
     </section>
 
@@ -163,6 +168,8 @@
   </footer>
 </body>
 </html>
+
+
 
 
 
