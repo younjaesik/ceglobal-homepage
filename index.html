@@ -126,8 +126,19 @@
     <section>
       <h2>Download</h2>
       <div class="store-links">
-        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" target="_blank">Google Play</a>
-        <a href="https://apps.apple.com/us/app/id6751176799" target="_blank">App Store (iOS)</a>
+        <!-- ANDROID CLICK TRACKING -->
+        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" 
+           target="_blank"
+           onclick="gtag('event', 'download_android', { 'send_to': 'AW-17736987455', 'value': 1 });">
+           Google Play
+        </a>
+
+        <!-- IOS CLICK TRACKING -->
+        <a href="https://apps.apple.com/us/app/id6751176799" 
+           target="_blank"
+           onclick="gtag('event', 'download_ios', { 'send_to': 'AW-17736987455', 'value': 1 });">
+           App Store (iOS)
+        </a>
       </div>
     </section>
 
@@ -142,6 +153,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
