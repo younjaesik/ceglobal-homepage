@@ -62,7 +62,7 @@
       margin: 0 auto;
     }
 
-    /* ⭐ 다운로드 배지 영역 */
+    /* ⭐ Download badge - local image version */
     .store-links {
       display: flex;
       justify-content: center;
@@ -71,8 +71,8 @@
       flex-wrap: wrap;
     }
     .store-links img {
-      height: 55px;   /* ⭐ 두 배지 높이 완전 통일 */
-      width: auto;    /* 가로는 자동 비율 */
+      height: 55px;   /* 두 배지 높이 완전 통일 */
+      width: auto;
       display: block;
     }
 
@@ -104,6 +104,8 @@
   </header>
 
   <main>
+
+    <!-- About -->
     <section>
       <h2>About the App</h2>
       <img src="point.PNG" alt="Pachira - Points&Coupons Icon" class="icon">
@@ -115,6 +117,7 @@
       <p>No personal data collection / No registration required</p>
     </section>
 
+    <!-- Video -->
     <section>
       <h2>App Preview</h2>
       <div class="video-container">
@@ -126,35 +129,34 @@
       </div>
     </section>
 
+    <!-- DOWNLOAD -->
     <section>
       <h2>Download</h2>
       <div class="store-links">
 
-        <!-- Google Play -->
-        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" 
+        <!-- Google Play (local image + click tracking) -->
+        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
            target="_blank"
            onclick="gtag('event', 'download_android', { 'send_to': 'AW-17736987455', 'value': 1 });">
-          <img 
-            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-            alt="Get it on Google Play">
+          <img src="google.png" alt="Get it on Google Play">
         </a>
 
-        <!-- App Store -->
-        <a href="https://apps.apple.com/us/app/id6751176799" 
+        <!-- App Store (local image + click tracking) -->
+        <a href="https://apps.apple.com/us/app/id6751176799"
            target="_blank"
            onclick="gtag('event', 'download_ios', { 'send_to': 'AW-17736987455', 'value': 1 });">
-          <img 
-            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-            alt="Download on the App Store">
+          <img src="apple.png" alt="Download on the App Store">
         </a>
 
       </div>
     </section>
 
+    <!-- Contact -->
     <section>
       <h2>Contact</h2>
       <p>Email: <a href="mailto:pointegiftapp@gmail.com">pointegiftapp@gmail.com</a></p>
     </section>
+
   </main>
 
   <footer>
@@ -162,6 +164,8 @@
   </footer>
 </body>
 </html>
+
+
 
 
 
