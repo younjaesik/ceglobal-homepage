@@ -29,6 +29,21 @@
       padding: 1.5rem;
       text-align: center;
     }
+
+    /* ★ 언어 메뉴 스타일 ★ */
+    .lang-menu {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+    .lang-menu a {
+      margin: 0 8px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #004080;
+    }
+
     main {
       padding: 2rem;
       max-width: 800px;
@@ -62,7 +77,6 @@
       margin: 0 auto;
     }
 
-    /* Verde destacado */
     .title-green {
       font-size: 20px;
       font-weight: 700;
@@ -73,12 +87,10 @@
       font-weight: bold;
     }
 
-    /* Espaciado */
     p {
       line-height: 1.6;
     }
 
-    /* Download badge */
     .store-links {
       display: flex;
       justify-content: center;
@@ -119,8 +131,17 @@
     <p>Todas tus tarjetas de puntos y cupones en una sola app</p>
   </header>
 
-  <main>
+  <!-- ★ 언어 메뉴 추가됨 ★ -->
+  <div class="lang-menu">
+    <a href="/index.html">EN</a>
+    <a href="/fr.html">🇫🇷 FR</a>
+    <a href="/es.html">🇪🇸 ES</a>
+    <a href="/it.html">🇮🇹 IT</a>
+    <a href="/de.html">🇩🇪 DE</a>
+    <a href="/kr.html">🇰🇷 KR</a>
+  </div>
 
+  <main>
     <!-- Acerca de -->
     <section>
       <h2>Acerca de la App</h2>
@@ -188,3 +209,4 @@
 
 </body>
 </html>
+
