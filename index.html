@@ -47,7 +47,7 @@
       background-color: #eee;
       font-size: 0.9rem;
     }
-    .highlight {
+    .highlight-blue {
       color: #004080;
       font-weight: bold;
     }
@@ -62,7 +62,18 @@
       margin: 0 auto;
     }
 
-    /* ⭐ Download badge - local image version */
+    /* 초록 강조 */
+    .title-green {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2E7D32;
+    }
+    .tap-green {
+      color: #43A047;
+      font-weight: bold;
+    }
+
+    /* Download badge */
     .store-links {
       display: flex;
       justify-content: center;
@@ -71,7 +82,7 @@
       flex-wrap: wrap;
     }
     .store-links img {
-      height: 55px;   /* 두 배지 높이 완전 통일 */
+      height: 55px;
       width: auto;
       display: block;
     }
@@ -109,12 +120,20 @@
     <section>
       <h2>About the App</h2>
       <img src="point.PNG" alt="Pachira - Points&Coupons Icon" class="icon">
-      <p><strong>Pachira – Points&Coupons</strong> is a fast and lightweight app that lets you manage 
-        <span class="highlight">loyalty & reward cards, coupons, and e-gift cards</span> 
-        <span class="highlight">with just one tap</span>, without sign-up.
+
+      <p>
+        <span class="title-green">Pachira – Points&Coupons</span> is a fast and lightweight app that lets you manage 
+        <span class="highlight-blue">loyalty & reward cards (Membership Cards), coupons, and e-gift cards</span> 
+        <span class="tap-green">with just one tap</span>, without sign-up.
       </p>
-      <p class="highlight">Free</p>
-      <p>No personal data collection / No registration required</p>
+
+      <p class="highlight-blue">Free</p>
+
+      <!-- 줄바꿈 적용 -->
+      <p>
+        No personal data collection<br>
+        No registration required
+      </p>
     </section>
 
     <!-- Video -->
@@ -134,14 +153,14 @@
       <h2>Download</h2>
       <div class="store-links">
 
-        <!-- Google Play (local image + click tracking) -->
+        <!-- Google Play -->
         <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
            target="_blank"
            onclick="gtag('event', 'download_android', { 'send_to': 'AW-17736987455', 'value': 1 });">
           <img src="google.png" alt="Get it on Google Play">
         </a>
 
-        <!-- App Store (local image + click tracking) -->
+        <!-- App Store -->
         <a href="https://apps.apple.com/us/app/id6751176799"
            target="_blank"
            onclick="gtag('event', 'download_ios', { 'send_to': 'AW-17736987455', 'value': 1 });">
@@ -154,7 +173,7 @@
     <!-- Contact -->
     <section>
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:pointegiftapp@gmail.com">pointegiftapp@gmail.com</a></p>
+      <p>Email: <a href="mailto:pointgiftapp@gmail.com">pointgiftapp@gmail.com</a></p>
     </section>
 
   </main>
@@ -162,8 +181,10 @@
   <footer>
     &copy; 2025 CEglobal. All rights reserved.
   </footer>
+
 </body>
 </html>
+
 
 
 
