@@ -30,18 +30,31 @@
       text-align: center;
     }
 
-    /* ★ 언어 메뉴 스타일 ★ */
+    /* ★ 언어 메뉴 스타일 – 메인페이지와 동일 형식 ★ */
     .lang-menu {
       text-align: center;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      font-size: 1rem;
+      background: #eef3f8;
+      padding: 10px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #d5dce5;
+      font-size: 15px;
+      font-weight: 600;
+
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
     .lang-menu a {
-      margin: 0 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
       text-decoration: none;
-      font-weight: bold;
       color: #004080;
+      white-space: nowrap; /* 국기+언어 한 줄 고정 */
+    }
+    .lang-menu a:hover {
+      text-decoration: underline;
     }
 
     main {
@@ -131,15 +144,15 @@
     <p>Todas tus tarjetas de puntos y cupones en una sola app</p>
   </header>
 
-  <!-- ★ 언어 메뉴 추가됨 ★ -->
+  <!-- ★ 메인페이지와 같은 나라목차 ★ -->
   <div class="lang-menu">
-    <a href="/index.html">EN</a>
+    <a href="/index.html">🌍 En(UK·CA·AU)</a>
     <a href="/us.html">🇺🇸 US</a>
-    <a href="/fr.html">🇫🇷 FR</a>
-    <a href="/es.html">🇪🇸 ES</a>
-    <a href="/it.html">🇮🇹 IT</a>
-    <a href="/de.html">🇩🇪 DE</a>
-    <a href="/kr.html">🇰🇷 KR</a>
+    <a href="/fr.html">🇫🇷 Français</a>
+    <a href="/es.html">🇪🇸 Español</a>
+    <a href="/it.html">🇮🇹 Italiano</a>
+    <a href="/de.html">🇩🇪 Deutsch</a>
+    <a href="/kr.html">🇰🇷 Korea</a>
   </div>
 
   <main>
