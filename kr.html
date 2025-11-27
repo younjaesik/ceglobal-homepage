@@ -23,51 +23,62 @@
       background-color: #f9f9f9;
       color: #333;
     }
+
     header {
       background-color: #004080;
       color: white;
       padding: 1.5rem;
       text-align: center;
     }
+
     main {
       padding: 2rem;
       max-width: 800px;
       margin: 0 auto;
     }
+
     h1 {
       font-size: 2rem;
       margin-bottom: 1rem;
     }
+
     section { margin-bottom: 2rem; }
+
     footer {
       text-align: center;
       padding: 1rem;
       background-color: #eee;
       font-size: 0.9rem;
     }
+
     .highlight-blue {
       color: #004080;
       font-weight: bold;
     }
+
     .logo {
       display: block;
       max-width: 150px;
       margin: 0 auto 1rem;
     }
+
     .icon {
       max-width: 100px;
       display: block;
       margin: 0 auto;
     }
+
     .title-green {
       font-size: 20px;
       font-weight: 700;
       color: #2E7D32;
     }
+
     .tap-green {
       color: #43A047;
       font-weight: bold;
     }
+
     p { line-height: 1.6; }
 
     .store-links {
@@ -77,6 +88,7 @@
       align-items: center;
       flex-wrap: wrap;
     }
+
     .store-links img {
       height: 55px;
       width: auto;
@@ -92,6 +104,7 @@
       margin: 40px 0;
       border-radius: 10px;
     }
+
     .video-container iframe {
       position: absolute;
       top: 0;
@@ -101,16 +114,33 @@
       border: 0;
     }
 
+    /* ⭐ 메인 페이지와 동일한 언어 메뉴 스타일 */
     .lang-menu {
       text-align: center;
-      margin: 20px 0 30px;
-      font-size: 18px;
+      background: #eef3f8;
+      padding: 10px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #d5dce5;
+      font-size: 15px;
+      font-weight: 600;
+
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
+
     .lang-menu a {
-      margin: 0 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
       text-decoration: none;
-      font-weight: bold;
       color: #004080;
+      white-space: nowrap;
+    }
+
+    .lang-menu a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -123,7 +153,7 @@
     <p>모든 포인트와 쿠폰을 한 곳에서 — 단 하나의 앱</p>
   </header>
 
-  <!-- 언어 선택 메뉴 (메인페이지와 동일) -->
+  <!-- ⭐ 언어 선택 메뉴 (메인 페이지와 완벽히 동일) -->
   <div class="lang-menu">
     <a href="/index.html">🌍 En(UK·CA·AU)</a>
     <a href="/us.html">🇺🇸 US</a>
@@ -135,6 +165,7 @@
   </div>
 
   <main>
+
     <!-- 소개 -->
     <section>
       <h2>앱 소개</h2>
@@ -171,14 +202,12 @@
       <h2>다운로드</h2>
       <div class="store-links">
 
-        <!-- Google Play -->
         <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
            target="_blank"
            onclick="gtag('event', 'download_android_kr', { 'send_to': 'AW-17736987455', 'value': 1 });">
           <img src="google.png" alt="Google Play">
         </a>
 
-        <!-- App Store -->
         <a href="https://apps.apple.com/kr/app/id6751176799"
            target="_blank"
            onclick="gtag('event', 'download_ios_kr', { 'send_to': 'AW-17736987455', 'value': 1 });">
