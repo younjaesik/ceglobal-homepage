@@ -39,7 +39,6 @@
       margin-bottom: 1rem;
     }
     section { margin-bottom: 2rem; }
-
     footer {
       text-align: center;
       padding: 1rem;
@@ -62,7 +61,6 @@
       margin: 0 auto;
     }
 
-    /* Green highlight */
     .title-green {
       font-size: 20px;
       font-weight: 700;
@@ -106,14 +104,33 @@
       border: 0;
     }
 
+    /* ⭐ 메인 페이지와 완전히 동일한 언어 선택 메뉴 */
     .lang-menu {
       text-align: center;
-      margin: 20px 0 30px;
-      font-size: 18px;
+      background: #eef3f8;
+      padding: 10px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #d5dce5;
+      font-size: 15px;
+      font-weight: 600;
+
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
+
     .lang-menu a {
-      margin: 0 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
       text-decoration: none;
+      color: #004080;
+      white-space: nowrap;
+    }
+
+    .lang-menu a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -126,7 +143,7 @@
     <p>Toutes vos cartes de fidélité et coupons dans une seule application</p>
   </header>
 
-  <!-- Language menu -->
+  <!-- ⭐ 언어 선택 메뉴 (메인 페이지 스타일 적용) -->
   <div class="lang-menu">
     <a href="/index.html">🌍 En(UK·CA·AU)</a>
     <a href="/us.html">🇺🇸 US</a>
@@ -174,21 +191,17 @@
     <section>
       <h2>Télécharger</h2>
       <div class="store-links">
-
-        <!-- Google Play -->
         <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
            target="_blank"
            onclick="gtag('event', 'download_android_fr', { 'send_to': 'AW-17736987455', 'value': 1 });">
           <img src="google.png" alt="Google Play">
         </a>
 
-        <!-- App Store France -->
         <a href="https://apps.apple.com/fr/app/id6751176799"
            target="_blank"
            onclick="gtag('event', 'download_ios_fr', { 'send_to': 'AW-17736987455', 'value': 1 });">
           <img src="apple.png" alt="App Store">
         </a>
-
       </div>
     </section>
 
