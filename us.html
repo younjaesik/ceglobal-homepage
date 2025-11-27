@@ -39,12 +39,22 @@
       border-bottom: 1px solid #d5dce5;
       font-size: 15px;
       font-weight: 600;
+
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px; /* 언어 간 여백 */
     }
+
     .lang-menu a {
-      margin: 0 10px;
+      display: inline-flex;        /* 국기+텍스트 한 덩어리 */
+      align-items: center;
+      gap: 4px;                    /* 국기와 텍스트 간격 */
+      white-space: nowrap;         /* 줄바꿈 방지 */
       text-decoration: none;
       color: #004080;
     }
+
     .lang-menu a:hover {
       text-decoration: underline;
     }
@@ -82,7 +92,6 @@
       margin: 0 auto;
     }
 
-    /* Green highlights */
     .title-green {
       font-size: 20px;
       font-weight: 700;
