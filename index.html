@@ -108,7 +108,7 @@
 
     .store-links {
       display: flex;
-      flex-direction: column;   /* 버튼 3개 세로 */
+      flex-direction: column;   /* 버튼 세로 */
       justify-content: center;
       align-items: center;
       gap: 15px;
@@ -117,13 +117,21 @@
     .store-row {
       display: flex;
       align-items: center;
+      justify-content: center;  /* ⭐ 중앙 정렬 */
       gap: 10px;
+      width: 100%;              /* ⭐ Google Play와 폭 맞추기 */
     }
 
     .store-links img {
       height: 55px;
       width: auto;
       display: block;
+    }
+
+    .store-code {
+      font-size: 14px;
+      font-weight: 600;
+      color: #888888;           /* ⭐ 회색 계열 */
     }
 
     .video-container {
@@ -200,7 +208,7 @@
       </div>
     </section>
 
-    <!-- DOWNLOAD (⭐ 수정완료 버전) -->
+    <!-- DOWNLOAD -->
     <section>
       <h2>Download</h2>
 
@@ -220,7 +228,7 @@
              onclick="gtag('event', 'download_ios_ca', { 'send_to': 'AW-17736987455', 'value': 1 });">
             <img src="apple.png" alt="Download on the App Store">
           </a>
-          <span style="font-size:14px; font-weight:600;">CA</span>
+          <span class="store-code">CA</span>
         </div>
 
         <!-- App Store UK -->
@@ -230,7 +238,7 @@
              onclick="gtag('event', 'download_ios_uk', { 'send_to': 'AW-17736987455', 'value': 1 });">
             <img src="apple.png" alt="Download on the App Store">
           </a>
-          <span style="font-size:14px; font-weight:600;">UK</span>
+          <span class="store-code">UK</span>
         </div>
 
         <!-- App Store AU -->
@@ -240,7 +248,7 @@
              onclick="gtag('event', 'download_ios_au', { 'send_to': 'AW-17736987455', 'value': 1 });">
             <img src="apple.png" alt="Download on the App Store">
           </a>
-          <span style="font-size:14px; font-weight:600;">AU</span>
+          <span class="store-code">AU</span>
         </div>
 
       </div>
@@ -260,6 +268,8 @@
 
 </body>
 </html>
+
+
 
 
 
