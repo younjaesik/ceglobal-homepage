@@ -52,7 +52,7 @@
       gap: 4px;
       text-decoration: none;
       color: #004080;
-      white-space: nowrap; /* 절대 줄바꿈 금지 */
+      white-space: nowrap;
     }
 
     .lang-menu a:hover {
@@ -108,11 +108,18 @@
 
     .store-links {
       display: flex;
+      flex-direction: column;   /* 버튼 3개 세로 */
       justify-content: center;
-      gap: 2rem;
       align-items: center;
-      flex-wrap: wrap;
+      gap: 15px;
     }
+
+    .store-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .store-links img {
       height: 55px;
       width: auto;
@@ -136,6 +143,7 @@
       height: 100%;
       border: 0;
     }
+
   </style>
 </head>
 
@@ -192,9 +200,10 @@
       </div>
     </section>
 
-    <!-- DOWNLOAD -->
+    <!-- DOWNLOAD (⭐ 수정완료 버전) -->
     <section>
       <h2>Download</h2>
+
       <div class="store-links">
 
         <!-- Google Play -->
@@ -204,12 +213,35 @@
           <img src="google.png" alt="Get it on Google Play">
         </a>
 
-        <!-- App Store -->
-        <a href="https://apps.apple.com/us/app/id6751176799"
-           target="_blank"
-           onclick="gtag('event', 'download_ios', { 'send_to': 'AW-17736987455', 'value': 1 });">
-          <img src="apple.png" alt="Download on the App Store">
-        </a>
+        <!-- App Store CA -->
+        <div class="store-row">
+          <a href="https://apps.apple.com/ca/app/id6751176799"
+             target="_blank"
+             onclick="gtag('event', 'download_ios_ca', { 'send_to': 'AW-17736987455', 'value': 1 });">
+            <img src="apple.png" alt="Download on the App Store">
+          </a>
+          <span style="font-size:14px; font-weight:600;">CA</span>
+        </div>
+
+        <!-- App Store UK -->
+        <div class="store-row">
+          <a href="https://apps.apple.com/gb/app/id6751176799"
+             target="_blank"
+             onclick="gtag('event', 'download_ios_uk', { 'send_to': 'AW-17736987455', 'value': 1 });">
+            <img src="apple.png" alt="Download on the App Store">
+          </a>
+          <span style="font-size:14px; font-weight:600;">UK</span>
+        </div>
+
+        <!-- App Store AU -->
+        <div class="store-row">
+          <a href="https://apps.apple.com/au/app/id6751176799"
+             target="_blank"
+             onclick="gtag('event', 'download_ios_au', { 'send_to': 'AW-17736987455', 'value': 1 });">
+            <img src="apple.png" alt="Download on the App Store">
+          </a>
+          <span style="font-size:14px; font-weight:600;">AU</span>
+        </div>
 
       </div>
     </section>
@@ -228,6 +260,7 @@
 
 </body>
 </html>
+
 
 
 
