@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17736987455"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -30,7 +30,7 @@
       text-align: center;
     }
 
-    /* ⭐ 언어 선택 메뉴 */
+    /* 언어 선택 메뉴 */
     .lang-menu {
       text-align: center;
       background: #eef3f8;
@@ -39,7 +39,6 @@
       border-bottom: 1px solid #d5dce5;
       font-size: 15px;
       font-weight: 600;
-
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -54,59 +53,31 @@
       color: #004080;
       white-space: nowrap;
     }
-
-    .lang-menu a:hover {
-      text-decoration: underline;
-    }
+    .lang-menu a:hover { text-decoration: underline; }
 
     main {
       padding: 2rem;
       max-width: 800px;
       margin: 0 auto;
     }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
+    h1 { font-size: 2rem; margin-bottom: 1rem; }
+    section { margin-bottom: 2rem; }
     footer {
       text-align: center;
       padding: 1rem;
       background-color: #eee;
       font-size: 0.9rem;
     }
-    .highlight-blue {
-      color: #004080;
-      font-weight: bold;
-    }
-    .logo {
-      display: block;
-      max-width: 150px;
-      margin: 0 auto 1rem;
-    }
-    .icon {
-      max-width: 100px;
-      display: block;
-      margin: 0 auto;
-    }
 
-    .title-green {
-      font-size: 20px;
-      font-weight: 700;
-      color: #2E7D32;
-    }
-    .tap-green {
-      color: #43A047;
-      font-weight: bold;
-    }
+    .highlight-blue { color: #004080; font-weight: bold; }
+    .logo { display: block; max-width: 150px; margin: 0 auto 1rem; }
+    .icon { max-width: 100px; display: block; margin: 0 auto; }
 
-    p {
-      line-height: 1.6;
-    }
+    .title-green { font-size: 20px; font-weight: 700; color: #2E7D32; }
+    .tap-green { color: #43A047; font-weight: bold; }
+    p { line-height: 1.6; }
 
-    /* ⭐ 다운로드 영역 정렬 */
+    /* ⭐ 다운로드 영역 완전정렬 핵심 */
     .store-links {
       display: flex;
       flex-direction: column;
@@ -115,32 +86,30 @@
       gap: 15px;
     }
 
-    .store-links > a {
-      width: 250px; /* Google Play 버튼 기준으로 고정 */
-      display: flex;
-      justify-content: center;
-    }
-
-    .store-row {
+    /* 공통 버튼 박스 — 가로 240px 고정 */
+    .store-box {
+      width: 240px;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 250px;  /* Google Play 버튼과 동일 폭 */
       gap: 10px;
     }
 
-    .store-links img {
+    .store-box img {
+      width: 240px;
       height: 55px;
-      width: auto;
+      object-fit: contain;
       display: block;
     }
 
     .store-code {
       font-size: 14px;
       font-weight: 600;
-      color: #888888;
+      color: #888;
+      margin-left: -10px;
     }
 
+    /* video */
     .video-container {
       position: relative;
       width: 100%;
@@ -158,7 +127,6 @@
       height: 100%;
       border: 0;
     }
-
   </style>
 </head>
 
@@ -169,14 +137,13 @@
     <p>All your membership points and coupons in one simple app</p>
   </header>
 
-  <!-- ⭐ 언어 선택 메뉴 -->
+  <!-- 언어 선택 -->
   <div class="lang-menu">
     <a href="/index.html">🌍 En(UK·CA·AU)</a>
     <a href="/us.html">🇺🇸 US</a>
     <a href="/fr.html">🇫🇷 Français</a>
     <a href="/es.html">🇪🇸 Español</a>
     <a href="/es-la.html">🌍 Español (Latinoamérica)</a>
-
     <a href="/it.html">🇮🇹 Italiano</a>
     <a href="/de.html">🇩🇪 Deutsch</a>
     <a href="/kr.html">🇰🇷 Korea</a>
@@ -187,11 +154,11 @@
     <!-- About -->
     <section>
       <h2>About the App</h2>
-      <img src="point.PNG" alt="Pachira - Points&Coupons Icon" class="icon">
+      <img src="point.PNG" class="icon">
 
       <p>
         <span class="title-green">Pachira – Points&Coupons</span> is a fast and lightweight app that lets you manage<br>
-        <span class="highlight-blue">loyalty & reward cards (membership cards), coupons, and e-gift cards</span> 
+        <span class="highlight-blue">loyalty & reward cards, coupons, and e-gift cards</span>
         <span class="tap-green">with just one tap</span>, without sign-up.
       </p>
 
@@ -207,53 +174,43 @@
     <section>
       <h2>App Preview</h2>
       <div class="video-container">
-        <iframe 
-          src="https://www.youtube.com/embed/HmvIis6DmIs"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/HmvIis6DmIs" allowfullscreen></iframe>
       </div>
     </section>
 
-    <!-- DOWNLOAD -->
+    <!-- ⭐ DOWNLOAD -->
     <section>
       <h2>Download</h2>
 
       <div class="store-links">
 
         <!-- Google Play -->
-        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
-           target="_blank"
-           onclick="gtag('event', 'download_android', { 'send_to': 'AW-17736987455', 'value': 1 });">
-          <img src="google.png" alt="Get it on Google Play">
-        </a>
+        <div class="store-box">
+          <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" target="_blank">
+            <img src="google.png">
+          </a>
+        </div>
 
         <!-- App Store CA -->
-        <div class="store-row">
-          <a href="https://apps.apple.com/ca/app/id6751176799"
-             target="_blank"
-             onclick="gtag('event', 'download_ios_ca', { 'send_to': 'AW-17736987455', 'value': 1 });">
-            <img src="apple.png" alt="Download on the App Store">
+        <div class="store-box">
+          <a href="https://apps.apple.com/ca/app/id6751176799" target="_blank">
+            <img src="apple.png">
           </a>
           <span class="store-code">CA</span>
         </div>
 
         <!-- App Store UK -->
-        <div class="store-row">
-          <a href="https://apps.apple.com/gb/app/id6751176799"
-             target="_blank"
-             onclick="gtag('event', 'download_ios_uk', { 'send_to': 'AW-17736987455', 'value': 1 });">
-            <img src="apple.png" alt="Download on the App Store">
+        <div class="store-box">
+          <a href="https://apps.apple.com/gb/app/id6751176799" target="_blank">
+            <img src="apple.png">
           </a>
           <span class="store-code">UK</span>
         </div>
 
         <!-- App Store AU -->
-        <div class="store-row">
-          <a href="https://apps.apple.com/au/app/id6751176799"
-             target="_blank"
-             onclick="gtag('event', 'download_ios_au', { 'send_to': 'AW-17736987455', 'value': 1 });">
-            <img src="apple.png" alt="Download on the App Store">
+        <div class="store-box">
+          <a href="https://apps.apple.com/au/app/id6751176799" target="_blank">
+            <img src="apple.png">
           </a>
           <span class="store-code">AU</span>
         </div>
@@ -275,6 +232,8 @@
 
 </body>
 </html>
+
+
 
 
 
