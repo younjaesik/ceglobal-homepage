@@ -106,20 +106,27 @@
       line-height: 1.6;
     }
 
+    /* ⭐ 다운로드 영역 정렬 */
     .store-links {
       display: flex;
-      flex-direction: column;   /* 버튼 세로 */
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 15px;
     }
 
+    .store-links > a {
+      width: 250px; /* Google Play 버튼 기준으로 고정 */
+      display: flex;
+      justify-content: center;
+    }
+
     .store-row {
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: center;  /* ⭐ 중앙 정렬 */
+      width: 250px;  /* Google Play 버튼과 동일 폭 */
       gap: 10px;
-      width: 100%;              /* ⭐ Google Play와 폭 맞추기 */
     }
 
     .store-links img {
@@ -131,7 +138,7 @@
     .store-code {
       font-size: 14px;
       font-weight: 600;
-      color: #888888;           /* ⭐ 회색 계열 */
+      color: #888888;
     }
 
     .video-container {
@@ -268,6 +275,8 @@
 
 </body>
 </html>
+
+
 
 
 
