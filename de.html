@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17736987455"></script>
+  <!-- Google tag (GA4 + Google Ads) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WDWGBLQE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'AW-17736987455');
+
+    gtag('config', 'G-4WDWGBLQE');    // Google Analytics 4
+    gtag('config', 'AW-17736987455'); // Google Ads
   </script>
   <!-- Google tag END -->
 
@@ -17,12 +19,13 @@
 
   <style>
     body {
-      font-family: "Arial", sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f9f9f9;
       color: #333;
     }
+
     header {
       background-color: #004080;
       color: white;
@@ -30,7 +33,7 @@
       text-align: center;
     }
 
-    /* ⭐ 메인과 동일한 언어 메뉴 */
+    /* 언어 메뉴 */
     .lang-menu {
       text-align: center;
       background: #eef3f8;
@@ -39,12 +42,12 @@
       border-bottom: 1px solid #d5dce5;
       font-size: 15px;
       font-weight: 600;
-
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
     }
+
     .lang-menu a {
       display: inline-flex;
       align-items: center;
@@ -62,28 +65,55 @@
       max-width: 800px;
       margin: 0 auto;
     }
-    h1 { font-size: 2rem; margin-bottom: 1rem; }
-    section { margin-bottom: 2rem; }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
       background-color: #eee;
       font-size: 0.9rem;
     }
-    .highlight-blue { color: #004080; font-weight: bold; }
+
+    .highlight-blue {
+      color: #004080;
+      font-weight: bold;
+    }
+
     .logo {
       display: block;
       max-width: 150px;
       margin: 0 auto 1rem;
     }
+
     .icon {
       max-width: 100px;
       display: block;
       margin: 0 auto;
     }
-    .title-green { font-size: 20px; font-weight: 700; color: #2E7D32; }
-    .tap-green { color: #43A047; font-weight: bold; }
-    p { line-height: 1.6; }
+
+    .title-green {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2E7D32;
+    }
+
+    .tap-green {
+      color: #43A047;
+      font-weight: bold;
+    }
+
+    p {
+      line-height: 1.6;
+      text-align: center;
+    }
 
     .store-links {
       display: flex;
@@ -92,6 +122,7 @@
       align-items: center;
       flex-wrap: wrap;
     }
+
     .store-links img {
       height: 55px;
       width: auto;
@@ -107,6 +138,7 @@
       margin: 40px 0;
       border-radius: 10px;
     }
+
     .video-container iframe {
       position: absolute;
       top: 0;
@@ -126,14 +158,13 @@
   <p>Alle Ihre Punkte- und Gutscheinkarten in einer einzigen App</p>
 </header>
 
-<!-- ⭐ 메인페이지와 동일한 나라목차 -->
+<!-- 언어 선택 -->
 <div class="lang-menu">
   <a href="/index.html">🌍 En(UK·CA·AU)</a>
   <a href="/us.html">🇺🇸 US</a>
   <a href="/fr.html">🇫🇷 Français</a>
   <a href="/es.html">🇪🇸 Español</a>
   <a href="/es-la.html">🌍 Español (Latinoamérica)</a>
-
   <a href="/it.html">🇮🇹 Italiano</a>
   <a href="/de.html">🇩🇪 Deutsch</a>
   <a href="/kr.html">🇰🇷 Korea</a>
@@ -141,26 +172,17 @@
 
 <main>
 
-  <!-- ABOUT -->
   <section>
     <h2>Über die App</h2>
     <img src="point.PNG" alt="Pachira – Punkte & Coupons Icon" class="icon">
-
     <p>
-      <span class="title-green">Pachira – Punkte & Coupons</span> ist eine schnelle und schlanke App, mit der Sie<br>
-      <span class="highlight-blue">Treue- & Bonuskarten, Gutscheine und digitale Geschenkkarten</span>
-      <span class="tap-green">mit nur einem Tippen</span> verwalten können – ganz ohne Registrierung.
+      <span class="title-green">Pachira – Punkte & Coupons</span><br>
+      <span class="highlight-blue">Treuekarten, Gutscheine und digitale Geschenkkarten</span><br>
+      <span class="tap-green">mit nur einem Tippen</span>, ganz ohne Registrierung.
     </p>
-
-    <p class="highlight-blue">Kostenlos</p>
-
-    <p>
-      Keine Erhebung persönlicher Daten<br>
-      Keine Registrierung erforderlich
-    </p>
+    <p class="highlight-blue">Kostenlos · Keine persönlichen Daten · Keine Registrierung</p>
   </section>
 
-  <!-- VIDEO -->
   <section>
     <h2>App Vorschau</h2>
     <div class="video-container">
@@ -172,29 +194,25 @@
     </div>
   </section>
 
-  <!-- DOWNLOAD -->
   <section>
     <h2>Herunterladen</h2>
     <div class="store-links">
 
-      <!-- Google Play -->
       <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
          target="_blank"
-         onclick="gtag('event', 'download_android_de', { 'send_to': 'AW-17736987455', 'value': 1 });">
+         onclick="gtag('event', 'download_android_de');">
         <img src="google.png" alt="Google Play">
       </a>
 
-      <!-- App Store DE -->
       <a href="https://apps.apple.com/de/app/id6751176799"
          target="_blank"
-         onclick="gtag('event', 'download_ios_de', { 'send_to': 'AW-17736987455', 'value': 1 });">
+         onclick="gtag('event', 'download_ios_de');">
         <img src="apple.png" alt="App Store">
       </a>
 
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section>
     <h2>Kontakt</h2>
     <p>Email: <a href="mailto:pointgiftapp@gmail.com">pointgiftapp@gmail.com</a></p>
@@ -208,3 +226,4 @@
 
 </body>
 </html>
+
