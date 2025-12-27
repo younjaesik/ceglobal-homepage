@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17736987455"></script>
+  <!-- Google tag (GA4 + Google Ads) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WDWGBLQE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'AW-17736987455');
+
+    gtag('config', 'G-4WDWGBLQE');    // Google Analytics 4
+    gtag('config', 'AW-17736987455'); // Google Ads
   </script>
   <!-- Google tag END -->
 
@@ -17,12 +19,13 @@
 
   <style>
     body {
-      font-family: "Arial", sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f9f9f9;
       color: #333;
     }
+
     header {
       background-color: #004080;
       color: white;
@@ -53,15 +56,25 @@
       color: #004080;
       white-space: nowrap;
     }
-    .lang-menu a:hover { text-decoration: underline; }
+    .lang-menu a:hover {
+      text-decoration: underline;
+    }
 
     main {
       padding: 2rem;
       max-width: 800px;
       margin: 0 auto;
     }
-    h1 { font-size: 2rem; margin-bottom: 1rem; }
-    section { margin-bottom: 2rem; }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -69,15 +82,40 @@
       font-size: 0.9rem;
     }
 
-    .highlight-blue { color: #004080; font-weight: bold; }
-    .logo { display: block; max-width: 150px; margin: 0 auto 1rem; }
-    .icon { max-width: 100px; display: block; margin: 0 auto; }
+    .highlight-blue {
+      color: #004080;
+      font-weight: bold;
+    }
 
-    .title-green { font-size: 20px; font-weight: 700; color: #2E7D32; }
-    .tap-green { color: #43A047; font-weight: bold; }
-    p { line-height: 1.6; }
+    .logo {
+      display: block;
+      max-width: 150px;
+      margin: 0 auto 1rem;
+    }
 
-    /* ⭐ 다운로드 영역 정렬 */
+    .icon {
+      max-width: 100px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .title-green {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2E7D32;
+    }
+
+    .tap-green {
+      color: #43A047;
+      font-weight: bold;
+    }
+
+    p {
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* 다운로드 영역 */
     .store-links {
       display: flex;
       flex-direction: column;
@@ -86,10 +124,9 @@
       gap: 15px;
     }
 
-    /* 각 버튼 한 줄(이미지는 가운데, 코드만 옆으로) */
     .store-row {
       position: relative;
-      width: 240px;          /* 버튼 가로 고정 */
+      width: 240px;
     }
 
     .store-row img {
@@ -97,17 +134,17 @@
       height: 55px;
       object-fit: contain;
       display: block;
-      margin: 0 auto;        /* 이미지를 정확히 가운데 */
+      margin: 0 auto;
     }
 
     .store-code {
       position: absolute;
-      right: -32px;          /* 버튼 오른쪽 바깥으로 살짝 */
+      right: -32px;
       top: 50%;
       transform: translateY(-50%);
       font-size: 14px;
       font-weight: 600;
-      color: #888888;        /* 회색 계열 */
+      color: #888;
     }
 
     /* video */
@@ -120,6 +157,7 @@
       margin: 40px 0;
       border-radius: 10px;
     }
+
     .video-container iframe {
       position: absolute;
       top: 0;
@@ -151,95 +189,72 @@
   </div>
 
   <main>
-
-    <!-- About -->
     <section>
       <h2>About the App</h2>
       <img src="point.PNG" class="icon" alt="Pachira Icon">
-
       <p>
-        <span class="title-green">Pachira – Points&Coupons</span> is a fast and lightweight app that lets you manage<br>
-        <span class="highlight-blue">loyalty & reward cards, coupons, and e-gift cards</span>
-        <span class="tap-green">with just one tap</span>, without sign-up.
+        <span class="title-green">Pachira – Points&Coupons</span><br>
+        <span class="highlight-blue">Loyalty cards, coupons, and e-gift cards</span><br>
+        <span class="tap-green">with just one tap</span>, no sign-up required.
       </p>
-
-      <p class="highlight-blue">Free</p>
-
-      <p>
-        No personal data collection<br>
-        No registration required
-      </p>
+      <p class="highlight-blue">Free · No personal data · No registration</p>
     </section>
 
-    <!-- Video -->
     <section>
       <h2>App Preview</h2>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/HmvIis6DmIs"
-                allowfullscreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+        <iframe
+          src="https://www.youtube.com/embed/HmvIis6DmIs"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
         </iframe>
       </div>
     </section>
 
-    <!-- ⭐ DOWNLOAD -->
     <section>
       <h2>Download</h2>
-
       <div class="store-links">
-
-        <!-- Google Play -->
         <div class="store-row">
-          <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
-             target="_blank">
+          <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" target="_blank">
             <img src="google.png" alt="Get it on Google Play">
           </a>
         </div>
 
-        <!-- App Store CA -->
         <div class="store-row">
-          <a href="https://apps.apple.com/ca/app/id6751176799"
-             target="_blank">
+          <a href="https://apps.apple.com/ca/app/id6751176799" target="_blank">
             <img src="apple.png" alt="Download on the App Store (CA)">
           </a>
           <span class="store-code">CA</span>
         </div>
 
-        <!-- App Store UK -->
         <div class="store-row">
-          <a href="https://apps.apple.com/gb/app/id6751176799"
-             target="_blank">
+          <a href="https://apps.apple.com/gb/app/id6751176799" target="_blank">
             <img src="apple.png" alt="Download on the App Store (UK)">
           </a>
           <span class="store-code">UK</span>
         </div>
 
-        <!-- App Store AU -->
         <div class="store-row">
-          <a href="https://apps.apple.com/au/app/id6751176799"
-             target="_blank">
+          <a href="https://apps.apple.com/au/app/id6751176799" target="_blank">
             <img src="apple.png" alt="Download on the App Store (AU)">
           </a>
           <span class="store-code">AU</span>
         </div>
-
       </div>
     </section>
 
-    <!-- Contact -->
     <section>
       <h2>Contact</h2>
       <p>Email: <a href="mailto:pointgiftapp@gmail.com">pointgiftapp@gmail.com</a></p>
     </section>
-
   </main>
 
   <footer>
     &copy; 2025 CEglobal. All rights reserved.
   </footer>
-
 </body>
 </html>
+
 
 
 
