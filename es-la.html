@@ -37,7 +37,7 @@
       text-align: center;
       background: #eef3f8;
       padding: 10px;
-      margin-bottom: 6px; /* ✅ 메뉴-다운로드 간격 최소화 */
+      margin-bottom: 6px; /* 메뉴-다운로드 간격 최소 */
       border-bottom: 1px solid #d5dce5;
       font-size: 15px;
       font-weight: 600;
@@ -61,8 +61,8 @@
     }
 
     main {
-      padding: 1.2rem;       /* ✅ 상단 여백 축소 */
-      padding-top: 0.4rem;   /* ✅ 메뉴 바로 아래 붙이기 */
+      padding: 1.2rem;
+      padding-top: 0.4rem;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -111,12 +111,13 @@
       font-weight: bold;
     }
 
+    /* 기본 문단 정렬 */
     p {
       line-height: 1.6;
       text-align: center;
     }
 
-    /* 원본 유지 */
+    /* 다운로드 버튼 기본 */
     .store-links {
       display: flex;
       justify-content: center;
@@ -131,14 +132,22 @@
       display: block;
     }
 
-    /* ✅ 다운로드 섹션만: 세로 배치 + 여백 최소 */
+    /* 다운로드 섹션만: 세로 배치 + 간격 2배 */
     section.download {
       margin-top: 0;
       padding-top: 0;
     }
     section.download .store-links {
-      flex-direction: column;   /* 세로 배치 */
-      gap: 12px;
+      flex-direction: column;   /* 세로 배치 유지 */
+      gap: 24px;                /* ✅ 기존 12px → 24px */
+    }
+
+    /* 본문 정렬 고정 (깨짐 방지) */
+    section.about {
+      text-align: center;
+    }
+    section.about * {
+      text-align: center;
     }
 
     .video-container {
@@ -166,7 +175,6 @@
 
 <header>
   <img src="ceglobal.jpg" alt="CEglobal Logo" class="logo">
-  <!-- ✅ 텍스트만 변경 -->
   <h1>Pachira</h1>
   <p>Todas tus tarjetas de puntos y cupones en una sola app, fácil y rápida.</p>
 </header>
@@ -184,11 +192,10 @@
 
 <main>
 
-  <!-- ✅ 다운로드 최상단 / 세로 배치 / 여백 최소 -->
+  <!-- 다운로드 최상단 / 세로 배치 -->
   <section class="download">
     <h2>Descargar</h2>
     <div class="store-links">
-
       <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
          target="_blank"
          onclick="gtag('event', 'download_android_es');">
@@ -200,12 +207,11 @@
          onclick="gtag('event', 'download_ios_es');">
         <img src="apple.png" alt="App Store">
       </a>
-
     </div>
   </section>
 
-  <!-- ⬇️ 이하 본문: 원본 그대로 -->
-  <section>
+  <!-- 본문 (문구/구조 그대로, 정렬만 고정) -->
+  <section class="about">
     <h2>Acerca de la App</h2>
     <img src="point.PNG" alt="Pachira – Puntos & Cupones Icon" class="icon">
     <p>
