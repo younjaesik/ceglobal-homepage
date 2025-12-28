@@ -7,13 +7,15 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-4WDWGBLQE');
-    gtag('config', 'AW-17736987455');
+
+    gtag('config', 'G-4WDWGBLQE');    // Google Analytics 4
+    gtag('config', 'AW-17736987455'); // Google Ads
   </script>
+  <!-- Google tag END -->
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pachira – Puntos & Cupones | CEglobal</title>
+  <title>CEglobal | Pachira – Puntos & Cupones</title>
 
   <style>
     body {
@@ -27,27 +29,22 @@
     header {
       background-color: #004080;
       color: white;
-      padding: 0.9rem 1rem 0.6rem;
+      padding: 1.5rem;
       text-align: center;
     }
 
-    .logo {
-      display: block;
-      max-width: 140px;
-      margin: 0 auto 0.3rem;
-    }
-
     .lang-menu {
+      text-align: center;
       background: #eef3f8;
-      padding: 6px;
-      margin-bottom: 4px;
+      padding: 10px;
+      margin-bottom: 6px; /* ✅ 메뉴-다운로드 간격 최소화 */
       border-bottom: 1px solid #d5dce5;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .lang-menu a {
@@ -59,43 +56,31 @@
       white-space: nowrap;
     }
 
+    .lang-menu a:hover {
+      text-decoration: underline;
+    }
+
     main {
-      padding: 0.6rem 1.2rem 1.2rem;
+      padding: 1.2rem;       /* ✅ 상단 여백 축소 */
+      padding-top: 0.4rem;   /* ✅ 메뉴 바로 아래 붙이기 */
       max-width: 800px;
       margin: 0 auto;
     }
 
-    section {
-      margin-bottom: 1.6rem;
-    }
-
-    /* 🔥 다운로드 섹션만 조정 */
-    section.download {
-      margin-top: 0;
-      padding-top: 0;
-    }
-
-    section.download h2 {
-      margin-top: 0;
-    }
-
-    section.download p {
-      margin-top: 0.2rem;
-    }
-
     h1 {
-      font-size: 1.7rem;
-      margin: 0.2rem 0 0.3rem;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
 
-    h2 {
-      margin-top: 0;
+    section {
+      margin-bottom: 2rem;
     }
 
-    p {
-      line-height: 1.6;
+    footer {
       text-align: center;
-      margin: 0.4rem 0;
+      padding: 1rem;
+      background-color: #eee;
+      font-size: 0.9rem;
     }
 
     .highlight-blue {
@@ -103,28 +88,20 @@
       font-weight: bold;
     }
 
-    .store-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.6rem;
-      align-items: center;
-      flex-wrap: nowrap;
-    }
-
-    .store-links img {
-      height: 52px;
-      width: auto;
+    .logo {
       display: block;
+      max-width: 150px;
+      margin: 0 auto 1rem;
     }
 
     .icon {
-      max-width: 90px;
+      max-width: 100px;
       display: block;
-      margin: 0.5rem auto;
+      margin: 0 auto;
     }
 
     .title-green {
-      font-size: 19px;
+      font-size: 20px;
       font-weight: 700;
       color: #2E7D32;
     }
@@ -134,29 +111,53 @@
       font-weight: bold;
     }
 
+    p {
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* 원본 유지 */
+    .store-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .store-links img {
+      height: 55px;
+      width: auto;
+      display: block;
+    }
+
+    /* ✅ 다운로드 섹션만: 세로 배치 + 여백 최소 */
+    section.download {
+      margin-top: 0;
+      padding-top: 0;
+    }
+    section.download .store-links {
+      flex-direction: column;   /* 세로 배치 */
+      gap: 12px;
+    }
+
     .video-container {
       position: relative;
       width: 100%;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      margin: 30px 0;
+      margin: 40px 0;
       border-radius: 10px;
     }
 
     .video-container iframe {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       border: 0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #eee;
-      font-size: 0.85rem;
     }
   </style>
 </head>
@@ -165,65 +166,75 @@
 
 <header>
   <img src="ceglobal.jpg" alt="CEglobal Logo" class="logo">
-  <h1>Pachira – Puntos & Cupones</h1>
-  <p>Todas tus tarjetas de puntos y cupones en una sola app.</p>
+  <!-- ✅ 텍스트만 변경 -->
+  <h1>Pachira</h1>
+  <p>Todas tus tarjetas de puntos y cupones en una sola app, fácil y rápida.</p>
 </header>
 
 <div class="lang-menu">
-  <a href="/index.html">🌍 EN</a>
+  <a href="/index.html">🌍 En(UK·CA·AU)</a>
   <a href="/us.html">🇺🇸 US</a>
-  <a href="/fr.html">🇫🇷 FR</a>
-  <a href="/es.html">🇪🇸 ES</a>
-  <a href="/es-la.html">🌎 ES-LA</a>
-  <a href="/it.html">🇮🇹 IT</a>
-  <a href="/de.html">🇩🇪 DE</a>
-  <a href="/kr.html">🇰🇷 KR</a>
+  <a href="/fr.html">🇫🇷 Français</a>
+  <a href="/es.html">🇪🇸 Español</a>
+  <a href="/es-la.html">🌍 Español (Latinoamérica)</a>
+  <a href="/it.html">🇮🇹 Italiano</a>
+  <a href="/de.html">🇩🇪 Deutsch</a>
+  <a href="/kr.html">🇰🇷 Korea</a>
 </div>
 
 <main>
 
+  <!-- ✅ 다운로드 최상단 / 세로 배치 / 여백 최소 -->
   <section class="download">
     <h2>Descargar</h2>
-    <p class="highlight-blue">Gratis · Sin registro · Sin datos personales</p>
-
     <div class="store-links">
+
       <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
          target="_blank"
-         onclick="gtag('event','download_android_es');">
+         onclick="gtag('event', 'download_android_es');">
         <img src="google.png" alt="Google Play">
       </a>
 
       <a href="https://apps.apple.com/mx/app/id6751176799"
          target="_blank"
-         onclick="gtag('event','download_ios_es');">
+         onclick="gtag('event', 'download_ios_es');">
         <img src="apple.png" alt="App Store">
       </a>
+
     </div>
   </section>
 
-  <!-- 이하 본문 원본 그대로 -->
+  <!-- ⬇️ 이하 본문: 원본 그대로 -->
   <section>
     <h2>Acerca de la App</h2>
-    <img src="point.PNG" alt="Pachira App Icon" class="icon">
+    <img src="point.PNG" alt="Pachira – Puntos & Cupones Icon" class="icon">
     <p>
-      <span class="title-green">Pachira</span><br>
-      <span class="highlight-blue">Puntos, cupones y tarjetas digitales</span><br>
-      <span class="tap-green">con un solo toque</span>
+      <span class="title-green">Pachira – Puntos & Cupones</span><br>
+      <span class="highlight-blue">Tarjetas de puntos, cupones y tarjetas de regalo digitales</span><br>
+      <span class="tap-green">con un solo toque</span>, sin necesidad de registrarte.
     </p>
-    <p class="highlight-blue">Funciona sin registro ni internet</p>
+    <p class="highlight-blue">Gratis · Sin datos personales · Sin registro</p>
   </section>
 
   <section>
     <h2>Vista previa</h2>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/3ReeO7UlmO8" allowfullscreen></iframe>
+      <iframe
+        src="https://www.youtube.com/embed/3ReeO7UlmO8"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </div>
   </section>
 
   <section>
     <h2>Otro video</h2>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/2yXsQvthNnM" allowfullscreen></iframe>
+      <iframe
+        src="https://www.youtube.com/embed/2yXsQvthNnM"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </div>
   </section>
 
