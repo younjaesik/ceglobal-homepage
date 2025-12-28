@@ -8,8 +8,8 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-4WDWGBLQE');    // Google Analytics 4
-    gtag('config', 'AW-17736987455'); // Google Ads
+    gtag('config', 'G-4WDWGBLQE');
+    gtag('config', 'AW-17736987455');
   </script>
   <!-- Google tag END -->
 
@@ -38,7 +38,7 @@
       text-align: center;
       background: #eef3f8;
       padding: 10px;
-      margin-bottom: 25px;
+      margin-bottom: 12px;
       border-bottom: 1px solid #d5dce5;
       font-size: 15px;
       font-weight: 600;
@@ -154,7 +154,8 @@
 
 <header>
   <img src="ceglobal.jpg" alt="CEglobal Logo" class="logo">
-  <h1>CEglobal</h1>
+  <!-- ✅ 텍스트만 변경 -->
+  <h1>Pachira</h1>
   <p>Alle Ihre Punkte- und Gutscheinkarten in einer einzigen App</p>
 </header>
 
@@ -172,6 +173,27 @@
 
 <main>
 
+  <!-- ✅ Download 섹션 상단 이동 (내용 그대로) -->
+  <section>
+    <h2>Herunterladen</h2>
+    <div class="store-links">
+
+      <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
+         target="_blank"
+         onclick="gtag('event', 'download_android_de');">
+        <img src="google.png" alt="Google Play">
+      </a>
+
+      <a href="https://apps.apple.com/de/app/id6751176799"
+         target="_blank"
+         onclick="gtag('event', 'download_ios_de');">
+        <img src="apple.png" alt="App Store">
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ⬇️ 본문 이하 전부 원본 유지 -->
   <section>
     <h2>Über die App</h2>
     <img src="point.PNG" alt="Pachira – Punkte & Coupons Icon" class="icon">
@@ -195,25 +217,6 @@
   </section>
 
   <section>
-    <h2>Herunterladen</h2>
-    <div class="store-links">
-
-      <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
-         target="_blank"
-         onclick="gtag('event', 'download_android_de');">
-        <img src="google.png" alt="Google Play">
-      </a>
-
-      <a href="https://apps.apple.com/de/app/id6751176799"
-         target="_blank"
-         onclick="gtag('event', 'download_ios_de');">
-        <img src="apple.png" alt="App Store">
-      </a>
-
-    </div>
-  </section>
-
-  <section>
     <h2>Kontakt</h2>
     <p>Email: <a href="mailto:pointgiftapp@gmail.com">pointgiftapp@gmail.com</a></p>
   </section>
@@ -226,4 +229,5 @@
 
 </body>
 </html>
+
 
