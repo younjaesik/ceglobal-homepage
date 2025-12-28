@@ -8,8 +8,8 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-4WDWGBLQE');    // Google Analytics 4
-    gtag('config', 'AW-17736987455'); // Google Ads
+    gtag('config', 'G-4WDWGBLQE');
+    gtag('config', 'AW-17736987455');
   </script>
   <!-- Google tag END -->
 
@@ -62,7 +62,6 @@
       display: block;
       margin: 0 auto;
     }
-
     .title-green {
       font-size: 20px;
       font-weight: 700;
@@ -72,7 +71,6 @@
       color: #43A047;
       font-weight: bold;
     }
-
     p { line-height: 1.6; }
 
     .store-links {
@@ -106,22 +104,19 @@
       border: 0;
     }
 
-    /* ⭐ 메인 페이지와 완전히 동일한 언어 선택 메뉴 */
     .lang-menu {
       text-align: center;
       background: #eef3f8;
       padding: 10px;
-      margin-bottom: 25px;
+      margin-bottom: 12px;
       border-bottom: 1px solid #d5dce5;
       font-size: 15px;
       font-weight: 600;
-
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
     }
-
     .lang-menu a {
       display: inline-flex;
       align-items: center;
@@ -130,7 +125,6 @@
       color: #004080;
       white-space: nowrap;
     }
-
     .lang-menu a:hover {
       text-decoration: underline;
     }
@@ -141,18 +135,17 @@
 
   <header>
     <img src="ceglobal.jpg" alt="CEglobal Logo" class="logo">
-    <h1>CEglobal</h1>
+    <!-- ✅ 텍스트만 변경 -->
+    <h1>Pachira</h1>
     <p>Toutes vos cartes de fidélité et coupons dans une seule application</p>
   </header>
 
-  <!-- ⭐ 언어 선택 메뉴 (메인 페이지 스타일 적용) -->
   <div class="lang-menu">
     <a href="/index.html">🌍 En(UK·CA·AU)</a>
     <a href="/us.html">🇺🇸 US</a>
     <a href="/fr.html">🇫🇷 Français</a>
     <a href="/es.html">🇪🇸 Español</a>
     <a href="/es-la.html">🌍 Español (Latinoamérica)</a>
-
     <a href="/it.html">🇮🇹 Italiano</a>
     <a href="/de.html">🇩🇪 Deutsch</a>
     <a href="/kr.html">🇰🇷 Korea</a>
@@ -160,7 +153,25 @@
 
   <main>
 
-    <!-- About -->
+    <!-- ✅ Télécharger 상단 이동 -->
+    <section>
+      <h2>Télécharger</h2>
+      <div class="store-links">
+        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
+           target="_blank"
+           onclick="gtag('event', 'download_android_fr', { 'send_to': 'AW-17736987455', 'value': 1 });">
+          <img src="google.png" alt="Google Play">
+        </a>
+
+        <a href="https://apps.apple.com/fr/app/id6751176799"
+           target="_blank"
+           onclick="gtag('event', 'download_ios_fr', { 'send_to': 'AW-17736987455', 'value': 1 });">
+          <img src="apple.png" alt="App Store">
+        </a>
+      </div>
+    </section>
+
+    <!-- ⬇️ 이하 본문 원본 유지 -->
     <section>
       <h2>À propos de l’application</h2>
       <img src="point.PNG" alt="Pachira - Points & Coupons Icon" class="icon">
@@ -179,7 +190,6 @@
       </p>
     </section>
 
-    <!-- Video -->
     <section>
       <h2>Aperçu vidéo</h2>
       <div class="video-container">
@@ -191,25 +201,6 @@
       </div>
     </section>
 
-    <!-- Download -->
-    <section>
-      <h2>Télécharger</h2>
-      <div class="store-links">
-        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
-           target="_blank"
-           onclick="gtag('event', 'download_android_fr', { 'send_to': 'AW-17736987455', 'value': 1 });">
-          <img src="google.png" alt="Google Play">
-        </a>
-
-        <a href="https://apps.apple.com/fr/app/id6751176799"
-           target="_blank"
-           onclick="gtag('event', 'download_ios_fr', { 'send_to': 'AW-17736987455', 'value': 1 });">
-          <img src="apple.png" alt="App Store">
-        </a>
-      </div>
-    </section>
-
-    <!-- Contact -->
     <section>
       <h2>Contact</h2>
       <p>Email : <a href="mailto:pointgiftapp@gmail.com">pointgiftapp@gmail.com</a></p>
@@ -223,4 +214,5 @@
 
 </body>
 </html>
+
 
