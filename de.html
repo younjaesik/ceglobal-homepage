@@ -115,6 +115,11 @@
       text-align: center;
     }
 
+    /* ✅ About 본문 설명만 왼쪽 정렬 */
+    .desc-left {
+      text-align: left;
+    }
+
     .store-links {
       display: flex;
       justify-content: center;
@@ -154,12 +159,10 @@
 
 <header>
   <img src="ceglobal.jpg" alt="CEglobal Logo" class="logo">
-  <!-- ✅ 텍스트만 변경 -->
   <h1>Pachira</h1>
   <p>Alle Ihre Punkte- und Gutscheinkarten in einer einzigen App</p>
 </header>
 
-<!-- 언어 선택 -->
 <div class="lang-menu">
   <a href="/index.html">🌍 En(UK·CA·AU)</a>
   <a href="/us.html">🇺🇸 US</a>
@@ -173,11 +176,9 @@
 
 <main>
 
-  <!-- ✅ Download 섹션 상단 이동 (내용 그대로) -->
   <section>
     <h2>Herunterladen</h2>
     <div class="store-links">
-
       <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
          target="_blank"
          onclick="gtag('event', 'download_android_de');">
@@ -189,19 +190,20 @@
          onclick="gtag('event', 'download_ios_de');">
         <img src="apple.png" alt="App Store">
       </a>
-
     </div>
   </section>
 
-  <!-- ⬇️ 본문 이하 전부 원본 유지 -->
   <section>
     <h2>Über die App</h2>
     <img src="point.PNG" alt="Pachira – Punkte & Coupons Icon" class="icon">
-    <p>
+
+    <!-- ✅ 이 문단만 왼쪽 정렬 -->
+    <p class="desc-left">
       <span class="title-green">Pachira – Punkte & Coupons</span><br>
       <span class="highlight-blue">Treuekarten, Gutscheine und digitale Geschenkkarten</span><br>
       <span class="tap-green">mit nur einem Tippen</span>, ganz ohne Registrierung.
     </p>
+
     <p class="highlight-blue">Kostenlos · Keine persönlichen Daten · Keine Registrierung</p>
   </section>
 
@@ -229,5 +231,6 @@
 
 </body>
 </html>
+
 
 
