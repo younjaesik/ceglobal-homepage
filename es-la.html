@@ -27,21 +27,20 @@
     header {
       background-color: #004080;
       color: white;
-      padding: 1.2rem 1rem 1rem; /* 🔽 살짝 축소 */
+      padding: 0.9rem 1rem 0.6rem;
       text-align: center;
     }
 
     .logo {
       display: block;
       max-width: 140px;
-      margin: 0 auto 0.5rem;
+      margin: 0 auto 0.3rem;
     }
 
-    /* 🔽 국기 메뉴 여백 최소화 */
     .lang-menu {
       background: #eef3f8;
-      padding: 8px;
-      margin-bottom: 8px;
+      padding: 6px;
+      margin-bottom: 4px;
       border-bottom: 1px solid #d5dce5;
       font-size: 14px;
       font-weight: 600;
@@ -61,7 +60,7 @@
     }
 
     main {
-      padding: 0.8rem 1.2rem 1.2rem; /* 🔽 상단 더 당김 */
+      padding: 0.6rem 1.2rem 1.2rem;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -70,9 +69,23 @@
       margin-bottom: 1.6rem;
     }
 
+    /* 🔥 다운로드 섹션만 조정 */
+    section.download {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    section.download h2 {
+      margin-top: 0;
+    }
+
+    section.download p {
+      margin-top: 0.2rem;
+    }
+
     h1 {
-      font-size: 1.8rem;
-      margin: 0.2rem 0 0.4rem;
+      font-size: 1.7rem;
+      margin: 0.2rem 0 0.3rem;
     }
 
     h2 {
@@ -169,8 +182,7 @@
 
 <main>
 
-  <!-- ✅ DOWNLOAD 최상단 / iOS 기준 완전 노출 -->
-  <section style="margin-top:0;">
+  <section class="download">
     <h2>Descargar</h2>
     <p class="highlight-blue">Gratis · Sin registro · Sin datos personales</p>
 
@@ -189,6 +201,7 @@
     </div>
   </section>
 
+  <!-- 이하 본문 원본 그대로 -->
   <section>
     <h2>Acerca de la App</h2>
     <img src="point.PNG" alt="Pachira App Icon" class="icon">
@@ -227,6 +240,7 @@
 
 </body>
 </html>
+
 
 
 
