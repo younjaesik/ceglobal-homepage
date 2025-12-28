@@ -7,11 +7,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-4WDWGBLQE');
     gtag('config', 'AW-17736987455');
   </script>
-  <!-- Google tag END -->
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +31,6 @@
       text-align: center;
     }
 
-    /* 언어 선택 메뉴 */
     .lang-menu {
       text-align: center;
       background: #eef3f8;
@@ -56,12 +53,11 @@
       color: #004080;
       white-space: nowrap;
     }
-    .lang-menu a:hover {
-      text-decoration: underline;
-    }
 
+    /* ✅ 핵심 수정 ① */
     main {
-      padding: 2rem;
+      padding: 1.2rem;
+      padding-top: 0.4rem;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -82,9 +78,9 @@
       font-size: 0.9rem;
     }
 
-    .highlight-blue {
-      color: #004080;
-      font-weight: bold;
+    p {
+      line-height: 1.6;
+      text-align: center;
     }
 
     .logo {
@@ -99,6 +95,11 @@
       margin: 0 auto;
     }
 
+    .highlight-blue {
+      color: #004080;
+      font-weight: bold;
+    }
+
     .title-green {
       font-size: 20px;
       font-weight: 700;
@@ -110,18 +111,11 @@
       font-weight: bold;
     }
 
-    p {
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    /* 다운로드 영역 */
     .store-links {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      gap: 15px;
+      gap: 24px;
     }
 
     .store-row {
@@ -134,7 +128,6 @@
       height: 55px;
       object-fit: contain;
       display: block;
-      margin: 0 auto;
     }
 
     .store-code {
@@ -147,7 +140,12 @@
       color: #888;
     }
 
-    /* video */
+    /* ✅ 핵심 수정 ② */
+    section.download h2 {
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }
+
     .video-container {
       position: relative;
       width: 100%;
@@ -170,94 +168,83 @@
 </head>
 
 <body>
-  <header>
-    <img src="ceglobal.jpg" alt="CEglobal Logo" class="logo">
-    <!-- ✅ 텍스트만 변경 -->
-    <h1>Pachira</h1>
-    <p>All your membership points and coupons in one simple app</p>
-  </header>
 
-  <!-- 언어 선택 -->
-  <div class="lang-menu">
-    <a href="/index.html">🌍 En(UK·CA·AU)</a>
-    <a href="/us.html">🇺🇸 US</a>
-    <a href="/fr.html">🇫🇷 Français</a>
-    <a href="/es.html">🇪🇸 Español</a>
-    <a href="/es-la.html">🌍 Español (Latinoamérica)</a>
-    <a href="/it.html">🇮🇹 Italiano</a>
-    <a href="/de.html">🇩🇪 Deutsch</a>
-    <a href="/kr.html">🇰🇷 Korea</a>
-  </div>
+<header>
+  <img src="ceglobal.jpg" alt="CEglobal Logo" class="logo">
+  <h1>Pachira</h1>
+  <p>All your membership points and coupons in one simple app</p>
+</header>
 
-  <main>
+<div class="lang-menu">
+  <a href="/index.html">🌍 En(UK·CA·AU)</a>
+  <a href="/us.html">🇺🇸 US</a>
+  <a href="/fr.html">🇫🇷 Français</a>
+  <a href="/es.html">🇪🇸 Español</a>
+  <a href="/es-la.html">🌍 Español (Latinoamérica)</a>
+  <a href="/it.html">🇮🇹 Italiano</a>
+  <a href="/de.html">🇩🇪 Deutsch</a>
+  <a href="/kr.html">🇰🇷 Korea</a>
+</div>
 
-    <!-- ✅ Download 섹션을 위로 이동 (내용 그대로) -->
-    <section>
-      <h2>Download</h2>
-      <div class="store-links">
-        <div class="store-row">
-          <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" target="_blank">
-            <img src="google.png" alt="Get it on Google Play">
-          </a>
-        </div>
+<main>
 
-        <div class="store-row">
-          <a href="https://apps.apple.com/ca/app/id6751176799" target="_blank">
-            <img src="apple.png" alt="Download on the App Store (CA)">
-          </a>
-          <span class="store-code">CA</span>
-        </div>
+  <!-- ✅ Download 위로 -->
+  <section class="download">
+    <h2>Download</h2>
+    <div class="store-links">
 
-        <div class="store-row">
-          <a href="https://apps.apple.com/gb/app/id6751176799" target="_blank">
-            <img src="apple.png" alt="Download on the App Store (UK)">
-          </a>
-          <span class="store-code">UK</span>
-        </div>
-
-        <div class="store-row">
-          <a href="https://apps.apple.com/au/app/id6751176799" target="_blank">
-            <img src="apple.png" alt="Download on the App Store (AU)">
-          </a>
-          <span class="store-code">AU</span>
-        </div>
+      <div class="store-row">
+        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" target="_blank">
+          <img src="google.png" alt="Google Play">
+        </a>
       </div>
-    </section>
 
-    <!-- ⬇️ 본문 이하 전부 원본 그대로 -->
-    <section>
-      <h2>About the App</h2>
-      <img src="point.PNG" class="icon" alt="Pachira Icon">
-      <p>
-        <span class="title-green">Pachira – Points&Coupons</span><br>
-        <span class="highlight-blue">Loyalty cards, coupons, and e-gift cards</span><br>
-        <span class="tap-green">with just one tap</span>, no sign-up required.
-      </p>
-      <p class="highlight-blue">Free · No personal data · No registration</p>
-    </section>
-
-    <section>
-      <h2>App Preview</h2>
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube.com/embed/HmvIis6DmIs"
-          allowfullscreen
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-        </iframe>
+      <div class="store-row">
+        <a href="https://apps.apple.com/ca/app/id6751176799" target="_blank">
+          <img src="apple.png" alt="App Store">
+        </a>
+        <span class="store-code">CA</span>
       </div>
-    </section>
 
-    <section>
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:pointgiftapp@gmail.com">pointgiftapp@gmail.com</a></p>
-    </section>
-  </main>
+      <div class="store-row">
+        <a href="https://apps.apple.com/gb/app/id6751176799" target="_blank">
+          <img src="apple.png" alt="App Store">
+        </a>
+        <span class="store-code">UK</span>
+      </div>
 
-  <footer>
-    &copy; 2025 CEglobal. All rights reserved.
-  </footer>
+      <div class="store-row">
+        <a href="https://apps.apple.com/au/app/id6751176799" target="_blank">
+          <img src="apple.png" alt="App Store">
+        </a>
+        <span class="store-code">AU</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 본문 유지 -->
+  <section>
+    <h2>About the App</h2>
+    <img src="point.PNG" class="icon">
+    <p>
+      <span class="title-green">Pachira – Points&Coupons</span><br>
+      <span class="highlight-blue">Loyalty cards, coupons, and e-gift cards</span><br>
+      <span class="tap-green">with just one tap</span>, no sign-up required.
+    </p>
+    <p class="highlight-blue">Free · No personal data · No registration</p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 CEglobal. All rights reserved.
+</footer>
+
 </body>
 </html>
+
+
 
 
 
