@@ -54,17 +54,11 @@
       white-space: nowrap;
     }
 
-    /* ✅ 핵심 수정 ① */
     main {
       padding: 1.2rem;
-      padding-top: 0.4rem;
+      padding-top: 0.4rem; /* 🔥 핵심 */
       max-width: 800px;
       margin: 0 auto;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
     }
 
     section {
@@ -111,6 +105,7 @@
       font-weight: bold;
     }
 
+    /* Download */
     .store-links {
       display: flex;
       flex-direction: column;
@@ -140,12 +135,12 @@
       color: #888;
     }
 
-    /* ✅ 핵심 수정 ② */
     section.download h2 {
       margin-top: 6px;
       margin-bottom: 10px;
     }
 
+    /* Video */
     .video-container {
       position: relative;
       width: 100%;
@@ -188,7 +183,7 @@
 
 <main>
 
-  <!-- ✅ Download 위로 -->
+  <!-- Download -->
   <section class="download">
     <h2>Download</h2>
     <div class="store-links">
@@ -223,7 +218,7 @@
     </div>
   </section>
 
-  <!-- 본문 유지 -->
+  <!-- About -->
   <section>
     <h2>About the App</h2>
     <img src="point.PNG" class="icon">
@@ -235,6 +230,24 @@
     <p class="highlight-blue">Free · No personal data · No registration</p>
   </section>
 
+  <!-- Video -->
+  <section>
+    <h2>App Preview</h2>
+    <div class="video-container">
+      <iframe
+        src="https://www.youtube.com/embed/HmvIis6DmIs"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:pointgiftapp@gmail.com">pointgiftapp@gmail.com</a></p>
+  </section>
+
 </main>
 
 <footer>
@@ -243,6 +256,7 @@
 
 </body>
 </html>
+
 
 
 
