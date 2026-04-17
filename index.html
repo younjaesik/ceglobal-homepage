@@ -56,7 +56,7 @@
 
     main {
       padding: 1.2rem;
-      padding-top: 0.4rem; /* 🔥 핵심 */
+      padding-top: 0.4rem;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -75,6 +75,11 @@
     p {
       line-height: 1.6;
       text-align: center;
+    }
+
+    /* ✅ 추가 */
+    .desc-left {
+      text-align: left !important;
     }
 
     .logo {
@@ -105,7 +110,6 @@
       font-weight: bold;
     }
 
-    /* Download */
     .store-links {
       display: flex;
       flex-direction: column;
@@ -140,7 +144,6 @@
       margin-bottom: 10px;
     }
 
-    /* Video */
     .video-container {
       position: relative;
       width: 100%;
@@ -183,45 +186,37 @@
 
 <main>
 
-  <!-- About -->
-  <section>
-    <h2>About the App</h2>
-    <img src="point.PNG" class="icon">
-    <p>
-      <span class="title-green">Pachira – Points&Coupons</span><br>
-      <span class="highlight-blue">Loyalty cards, coupons, and e-gift cards</span><br>
-      <span class="tap-green">with just one tap</span>, no sign-up required.
-    </p>
-    <p class="highlight-blue">Free · No personal data · No registration</p>
-    <p>
-      <span class="highlight-blue">To Buy · To Do</span><br>
-      Shopping list & daily/weekly reminders
-    </p>
-  </section>
+<section>
+  <h2>About the App</h2>
+  <img src="point.PNG" class="icon">
 
-  <!-- Video -->
-  <section>
-    <h2>App Preview</h2>
-    <div class="video-container">
-      <iframe
-        src="https://www.youtube.com/embed/HmvIis6DmIs"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="video-container">
-      <iframe
-        src="https://www.youtube.com/embed/eFVwm9ezJ7M"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </section>
+  <p class="desc-left">
+    <span class="title-green">Pachira – Points&Coupons</span><br>
+    <span class="highlight-blue">Loyalty cards, coupons, and e-gift cards</span><br>
+    <span class="tap-green">with just one tap</span>, no sign-up required.
+  </p>
 
-  <!-- Download -->
-  <section class="download">
-    <h2>Download</h2>
-    <div class="store-links">
+  <p class="highlight-blue desc-left">Free · No personal data · No registration</p>
+
+  <p class="desc-left">
+    <span class="highlight-blue">To Buy · To Do</span><br>
+    Shopping list & daily/weekly reminders
+  </p>
+</section>
+
+<section>
+  <h2>App Preview</h2>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/HmvIis6DmIs" allowfullscreen></iframe>
+  </div>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/eFVwm9ezJ7M" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="download">
+  <h2>Download</h2>
+  <div class="store-links">
 
       <div class="store-row">
         <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" target="_blank">
@@ -251,13 +246,12 @@
       </div>
 
     </div>
-  </section>
+</section>
 
-  <!-- Contact -->
-  <section>
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:pointegiftapp@gmail.com">pointegiftapp@gmail.com</a></p>
-  </section>
+<section>
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:pointegiftapp@gmail.com">pointegiftapp@gmail.com</a></p>
+</section>
 
 </main>
 
