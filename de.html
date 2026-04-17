@@ -113,6 +113,11 @@
       line-height: 1.6;
     }
 
+    /* ✅ 추가된 부분 */
+    .desc-left {
+      text-align: left !important;
+    }
+
     .video-container {
       position: relative;
       width: 100%;
@@ -173,7 +178,8 @@
   <h2>Über die App</h2>
   <img src="point.PNG" class="icon" alt="Pachira – Punkte & Coupons Icon">
 
-  <p>
+  <!-- ✅ 여기만 변경 -->
+  <p class="desc-left">
     <span class="title-green">Pachira – Punkte & Coupons</span><br>
     <span class="highlight-blue">Treuekarten, Gutscheine und digitale Geschenkkarten</span><br>
     <span class="tap-green">mit nur einem Tipp</span>, ohne Registrierung.
