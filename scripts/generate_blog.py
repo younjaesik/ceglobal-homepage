@@ -57,7 +57,7 @@ response = client.responses.create(
         "iPhone, iPad and Mac. Do not invent features, pricing, "
         "testimonials or scientific citations."
     ),
-    input=f"Write an original study guide about: {topic}",
+    input=f"Write an original study guide about: {topic}. Return the result as a valid JSON object.",
     text={"format": {"type": "json_object"}}
 )
 
