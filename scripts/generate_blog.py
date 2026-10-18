@@ -491,3 +491,39 @@ Discover RecallNote
 
 print(f"Created: {filename.relative_to(ROOT)}")
 print("Blog index updated successfully.")
+
+
+# Automatically update the blog sitemap.
+from xml.etree.ElementTree import Element, SubElement, ElementTree
+
+sitemap = Element(
+    "urlset",
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+)
+
+blog_urls = [BLOG / "index.html"] + sorted(
+    POSTS.glob("*.html"),
+    reverse=True
+)
+
+for file in blog_urls:
+    relative_path = file.relative_to(ROOT).as_posix()
+
+    if relative_path.endswith("/index.html"):
+        url = f"{SITE}/{relative_path[:-10]}"
+    else:
+        url = f"{SITE}/{relative_path}"
+
+    entry = SubElement(sitemap, "url")
+    SubElement(entry, "loc").text = url
+
+    if file == filename:
+        SubElement(entry, "lastmod").text = today
+
+ElementTree(sitemap).write(
+    ROOT / "sitemap.xml",
+    encoding="utf-8",
+    xml_declaration=True
+)
+
+print("Sitemap updated successfully.")
