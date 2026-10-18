@@ -4,7 +4,7 @@ import json
 import html
 import re
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime
 from zoneinfo import ZoneInfo
 from openai import OpenAI
 
@@ -18,18 +18,31 @@ APP_URL = "https://apps.apple.com/app/id6779927785"
 
 TOPICS = [
     "How to organize study notes for exam preparation",
-    "How flashcards can improve active recall",
-    "Practical ways to review PDF study materials",
-    "How to create a consistent revision routine",
-    "How to prepare for exams using digital notebooks",
-    "Study techniques for remembering difficult concepts",
-    "How to review notes across iPhone, iPad and Mac",
-    "How to make the most of short study sessions",
-    "Why spaced repetition matters for learning",
-    "How to build better study habits"
+    "How to use flashcards for active recall before exams",
+    "How to study effectively with PDF textbooks and annotations",
+    "How to build a practical weekly revision routine",
+    "How to use digital practice notebooks for exam preparation",
+    "How to remember difficult concepts with question-and-answer cards",
+    "How to study across iPhone, iPad and Mac with iCloud sync",
+    "How to make the most of a 20-minute study session",
+    "How to plan spaced review sessions without complicated tools",
+    "How to prepare a focused final review before an exam",
+    "How to organize revision cards by subject and importance",
+    "How to study from lecture PDFs and handwritten notes",
+    "How to share revision cards with classmates",
+    "How to create an exam-day revision checklist",
+    "How to review large amounts of study material efficiently",
+    "How to combine PDF reading, flashcards and practice notebooks",
+    "How to identify weak topics before a major exam",
+    "How to use active recall when studying law or other complex subjects",
+    "How to review key definitions and formulas before an exam",
+    "How to build a sustainable study system with digital tools"
 ]
 
-today = datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d")
+today = datetime.now(
+    ZoneInfo("Asia/Seoul")
+).strftime("%Y-%m-%d")
+
 filename = POSTS / f"{today}.html"
 
 if filename.exists():
@@ -41,35 +54,243 @@ topic = TOPICS[existing % len(TOPICS)]
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
+INSTRUCTIONS = """
+You are a professional educational writer for CEglobal,
+the independent developer of RecallNote.
+
+Your job is to publish useful, original English-language
+study guides for students and exam candidates.
+
+EDITORIAL REQUIREMENTS
+
+1. Write an original article of 700-1100 English words.
+2. Focus on solving one specific study problem.
+3. Give concrete, actionable steps and realistic examples.
+4. Use clear, natural English suitable for US and UK readers.
+5. Avoid generic motivational filler and repetitive advice.
+6. Explain why each recommended study technique is useful.
+7. Include at least one practical study workflow.
+8. Include examples relevant to real exam preparation.
+9. Use informative headings and short paragraphs.
+10. Never fabricate scientific findings, statistics or citations.
+
+RECALLNOTE: VERIFIED FEATURES
+
+RecallNote is a study and revision application.
+
+The following features are supported:
+
+- Flashcards for reviewing questions and answers.
+- Question-first flashcard review with answer reveal.
+- Exam-focused quick review mode for rapid revision.
+- Review selection by subject and importance in
+  exam-focused review mode.
+- PDF study material viewing.
+- PDF annotation and handwriting where supported.
+- PDF bookmarks and document navigation where supported.
+- Practice notebooks for writing and reviewing notes.
+- Sharing revision cards with other learners.
+- iCloud synchronization between supported Apple devices:
+  iPhone, iPad and Mac.
+- Offline study capabilities.
+
+IMPORTANT ACCURACY RULES
+
+Do not claim RecallNote:
+- Creates PDF documents from arbitrary source files.
+- Converts Word, PowerPoint or other files to PDF.
+- Automatically generates flashcards using AI.
+- Provides AI tutoring or AI-generated summaries.
+- Automatically schedules spaced repetition.
+- Automatically grades exams.
+- Offers OCR or text recognition.
+- Supports real-time collaborative editing.
+- Synchronizes Apple and Android devices through iCloud.
+- Offers any unverified feature.
+
+Do not invent subscription prices, purchase requirements,
+free-trial conditions, ratings or testimonials.
+
+Do not assume every PDF annotation feature is available
+on every platform.
+
+When describing a feature, explain how a student can use it
+in a practical study scenario.
+
+RECALLNOTE PROMOTION RULES
+
+The article must remain genuinely useful even if the reader
+does not install RecallNote.
+
+Introduce RecallNote naturally where it can help with
+the specific problem being discussed.
+
+Include one realistic example of a study session using
+RecallNote's verified features.
+
+Avoid repeatedly mentioning the app name.
+Do not write exaggerated marketing claims.
+Do not compare RecallNote with competitors without evidence.
+
+ARTICLE STRUCTURE
+
+- Start with a concise, engaging introduction.
+- Explain the study problem.
+- Provide practical, numbered or clearly structured steps.
+- Include a realistic worked example.
+- Explain how to review progress or avoid common mistakes.
+- Finish with a concise, actionable conclusion.
+
+SEARCH QUALITY
+
+Use a descriptive title matching the topic.
+Write a natural meta description under 160 characters.
+Use meaningful headings.
+Avoid keyword stuffing and repetitive SEO phrases.
+Do not invent author credentials or external references.
+
+OUTPUT FORMAT
+
+Return ONLY a valid JSON object with exactly these keys:
+
+"title"
+"description"
+"article_html"
+
+article_html must use only:
+h2, h3, p, ul, ol, li, strong, em
+
+Do not include:
+- h1
+- Markdown
+- JavaScript
+- CSS
+- hyperlinks
+- images
+- code blocks
+- HTML document wrappers
+
+Write the entire article in English.
+"""
+
+FORBIDDEN_PATTERNS = [
+    r"\bAI[- ]generated flashcards\b",
+    r"\bAI[- ]powered (?:tutor|summar(?:y|ies|ization))\b",
+    r"\bautomatic(?:ally)? (?:spaced repetition|scheduling)\b",
+    r"\bautomatically (?:generate|create) (?:PDFs?|flashcards)\b",
+    r"\bconvert(?:s|ing)? (?:Word|PowerPoint|documents?) to PDF\b",
+    r"\bOCR\b",
+    r"\boptical character recognition\b",
+    r"\breal[- ]time collaborat(?:ion|ive editing)\b",
+    r"\bautomatically grad(?:e|es|ing) exams?\b"
+]
+
+ALLOWED_TAGS = {
+    "h2", "h3", "p", "ul", "ol", "li", "strong", "em"
+}
+
+
+def validate_article(data):
+    if not isinstance(data, dict):
+        raise ValueError("AI response is not a JSON object.")
+
+    required = {"title", "description", "article_html"}
+
+    if set(data.keys()) != required:
+        raise ValueError(
+            "AI response has missing or unexpected fields."
+        )
+
+    for key in required:
+        if not isinstance(data[key], str):
+            raise ValueError(f"Invalid field type: {key}")
+
+        if not data[key].strip():
+            raise ValueError(f"Empty field: {key}")
+
+    title = data["title"].strip()
+    description = data["description"].strip()
+    article = data["article_html"].strip()
+
+    if len(title) > 120:
+        raise ValueError("Article title is too long.")
+
+    if len(description) > 160:
+        raise ValueError("Meta description is too long.")
+
+    plain_text = re.sub(r"<[^>]+>", " ", article)
+    plain_text = html.unescape(plain_text)
+    words = re.findall(r"\b[\w'-]+\b", plain_text)
+
+    if not 650 <= len(words) <= 1200:
+        raise ValueError(
+            f"Unexpected article length: {len(words)} words."
+        )
+
+    if "RecallNote" not in plain_text:
+        raise ValueError(
+            "Article does not mention RecallNote."
+        )
+
+    combined = title + " " + description + " " + plain_text
+
+    for pattern in FORBIDDEN_PATTERNS:
+        if re.search(pattern, combined, flags=re.I):
+            raise ValueError(
+                f"Potential unsupported feature: {pattern}"
+            )
+
+    tags = re.findall(
+        r"<\s*/?\s*([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>",
+        article
+    )
+
+    for tag in tags:
+        if tag.lower() not in ALLOWED_TAGS:
+            raise ValueError(
+                f"Disallowed HTML tag: {tag}"
+            )
+
+    if re.search(
+        r"<\s*(script|style|iframe|svg|img|a)\b",
+        article,
+        flags=re.I
+    ):
+        raise ValueError("Unsafe HTML element detected.")
+
+    return title, description, article, len(words)
+
+
 response = client.responses.create(
     model="gpt-4.1-mini",
-    instructions=(
-        "You write accurate, useful, original English study guides "
-        "for the CEglobal website. Return only a JSON object with "
-        "keys title, description, and article_html. "
-        "article_html must contain only h2, h3, p, ul, ol, li, "
-        "strong and em tags. No links, scripts, styles or markdown. "
-        "Write 600-900 words of genuinely helpful educational content. "
-        "Avoid keyword stuffing, exaggerated claims and fabricated research. "
-        "Mention RecallNote naturally near the end, not repeatedly. "
-        "RecallNote supports flashcards, PDF study materials, "
-        "practice notebooks and iCloud synchronization across "
-        "iPhone, iPad and Mac. Do not invent features, pricing, "
-        "testimonials or scientific citations."
+    instructions=INSTRUCTIONS,
+    input=(
+        f"Write a detailed, original educational article "
+        f"about this topic: {topic}. "
+        "Return the complete article as a valid JSON object. "
+        "Follow all accuracy, structure and formatting rules."
     ),
-    input=f"Write an original study guide about: {topic}. Return the result as a valid JSON object.",
-    text={"format": {"type": "json_object"}}
+    text={"format": {"type": "json_object"}},
+    max_output_tokens=4500
 )
 
-data = json.loads(response.output_text)
-title = html.escape(data["title"])
-description = html.escape(data["description"][:160], quote=True)
-article = data["article_html"]
+if not response.output_text:
+    raise ValueError("AI returned no article content.")
 
-# Allow only a limited set of formatting tags.
+data = json.loads(response.output_text)
+
+title, description, article, word_count = validate_article(data)
+
+print(f"Validated article: {title}")
+print(f"Word count: {word_count}")
+
+safe_title = html.escape(title)
+safe_description = html.escape(description, quote=True)
+
+# Strip unexpected attributes from permitted tags.
 article = re.sub(
-    r"<(?!/?(?:h2|h3|p|ul|ol|li|strong|em)\s*>)[^>]*>",
-    "",
+    r"<\s*(/?)\s*(h2|h3|p|ul|ol|li|strong|em)\b[^>]*>",
+    lambda m: f"<{m.group(1)}{m.group(2).lower()}>",
     article,
     flags=re.I
 )
@@ -79,51 +300,130 @@ page = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title} | CEglobal</title>
-<meta name="description" content="{description}">
+<title>{safe_title} | CEglobal</title>
+<meta name="description" content="{safe_description}">
 <link rel="canonical" href="{SITE}/blog/posts/{today}.html">
 <style>
-body{{font-family:system-ui,-apple-system,sans-serif;line-height:1.8;
-margin:0;background:#f7f8fa;color:#202631}}
-main{{max-width:780px;margin:40px auto;padding:35px;
-background:white;border-radius:14px}}
-h1{{font-size:2rem;line-height:1.3}}
-h2{{margin-top:32px}}
-a{{color:#1557b0}}
-.cta{{padding:20px;background:#eef4ff;border-radius:12px;margin-top:36px}}
-footer{{margin-top:36px;font-size:14px;color:#666}}
-@media(max-width:820px){{main{{margin:12px;padding:20px}}}}
+body{{
+    font-family:system-ui,-apple-system,sans-serif;
+    line-height:1.8;
+    margin:0;
+    background:#f7f8fa;
+    color:#202631;
+}}
+main{{
+    max-width:780px;
+    margin:40px auto;
+    padding:35px;
+    background:white;
+    border-radius:14px;
+}}
+h1{{
+    font-size:2rem;
+    line-height:1.3;
+}}
+h2{{
+    margin-top:32px;
+}}
+h3{{
+    margin-top:24px;
+}}
+a{{
+    color:#1557b0;
+}}
+.cta{{
+    padding:20px;
+    background:#eef4ff;
+    border-radius:12px;
+    margin-top:36px;
+}}
+footer{{
+    margin-top:36px;
+    font-size:14px;
+    color:#666;
+}}
+@media(max-width:820px){{
+    main{{
+        margin:12px;
+        padding:20px;
+    }}
+}}
 </style>
 </head>
 <body>
 <main>
-<nav><a href="/">CEglobal</a> / <a href="/blog/">Study Blog</a></nav>
-<h1>{title}</h1>
+<nav>
+<a href="/">CEglobal</a> /
+<a href="/blog/">Study Blog</a>
+</nav>
+
+<h1>{safe_title}</h1>
 <p><small>Published {today}</small></p>
-<article>{article}</article>
+
+<article>
+{article}
+</article>
+
 <div class="cta">
 <h2>Study with RecallNote</h2>
-<p>Organize your study materials, review flashcards and use practice
-notebooks with RecallNote for iPhone, iPad and Mac.</p>
-<p><a href="{APP_URL}">View RecallNote on the App Store</a></p>
-<p><a href="/recallnote/">Learn more about RecallNote</a></p>
+<p>
+Organize study materials, review flashcards,
+annotate supported PDF documents and use
+practice notebooks with RecallNote.
+</p>
+<p>
+Continue studying across iPhone, iPad and Mac
+with iCloud synchronization.
+</p>
+<p>
+<a href="{APP_URL}">
+View RecallNote on the App Store
+</a>
+</p>
+<p>
+<a href="/recallnote/">
+Learn more about RecallNote
+</a>
+</p>
 </div>
+
 <footer>© CEglobal</footer>
 </main>
 </body>
 </html>"""
 
+# Write only after article validation succeeds.
 filename.write_text(page, encoding="utf-8")
 
-posts = sorted(POSTS.glob("*.html"), reverse=True)
+posts = sorted(
+    POSTS.glob("*.html"),
+    reverse=True
+)
+
 items = []
+
 for post in posts:
     content = post.read_text(encoding="utf-8")
-    match = re.search(r"<h1>(.*?)</h1>", content, re.S)
-    post_title = re.sub(r"<[^>]+>", "", match.group(1)) if match else post.stem
+
+    match = re.search(
+        r"<h1>(.*?)</h1>",
+        content,
+        flags=re.S
+    )
+
+    if match:
+        post_title = re.sub(
+            r"<[^>]+>",
+            "",
+            match.group(1)
+        )
+        post_title = html.unescape(post_title)
+    else:
+        post_title = post.stem
+
     items.append(
         f'<li><a href="/blog/posts/{post.name}">'
-        f'{html.escape(html.unescape(post_title))}</a>'
+        f'{html.escape(post_title)}</a>'
         f' <small>({post.stem})</small></li>'
     )
 
@@ -132,25 +432,62 @@ index = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Study Tips & Guides | CEglobal</title>
-<meta name="description" content="Study techniques, flashcard guides,
-PDF note-taking tips and exam preparation articles from CEglobal.">
+<title>Study Tips &amp; Guides | CEglobal</title>
+<meta name="description"
+content="Practical study techniques, flashcard guides,
+PDF annotation tips and exam preparation
+articles from CEglobal.">
 <style>
-body{{font-family:system-ui,-apple-system,sans-serif;line-height:1.8;
-max-width:800px;margin:50px auto;padding:20px;color:#202631}}
-a{{color:#1557b0}}
-li{{padding:12px 0}}
+body{{
+    font-family:system-ui,-apple-system,sans-serif;
+    line-height:1.8;
+    max-width:800px;
+    margin:50px auto;
+    padding:20px;
+    color:#202631;
+}}
+a{{
+    color:#1557b0;
+}}
+li{{
+    padding:12px 0;
+}}
+@media(max-width:820px){{
+    body{{
+        margin:12px;
+        padding:15px;
+    }}
+}}
 </style>
 </head>
 <body>
+
 <p><a href="/">← CEglobal Home</a></p>
-<h1>Study Tips & Guides</h1>
-<p>Helpful study techniques, exam preparation guides and digital
-note-taking tips.</p>
-<ul>{''.join(items)}</ul>
-<p><a href="/recallnote/">Discover RecallNote</a></p>
+
+<h1>Study Tips &amp; Guides</h1>
+
+<p>
+Practical study strategies, exam preparation
+guides and digital note-taking tips.
+</p>
+
+<ul>
+{''.join(items)}
+</ul>
+
+<p>
+<a href="/recallnote/">
+Discover RecallNote
+</a>
+</p>
+
 </body>
 </html>"""
 
-(BLOG / "index.html").write_text(index, encoding="utf-8")
+(BLOG / "index.html").write_text(
+    index,
+    encoding="utf-8"
+)
+
 print(f"Created: {filename.relative_to(ROOT)}")
+print("Blog index updated successfully.")
