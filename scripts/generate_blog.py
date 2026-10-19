@@ -15,6 +15,8 @@ POSTS.mkdir(parents=True, exist_ok=True)
 
 SITE = "https://ceglobal.org"
 APP_URL = "https://apps.apple.com/app/id6779927785"
+ANDROID_URL = "https://play.google.com/store/apps/details?id=com.pachira.recallnote"
+WINDOWS_URL = "https://apps.microsoft.com/detail/9P3MRK8KNDL8"
 
 TOPICS = [
     "How to organize study notes for exam preparation",
@@ -92,6 +94,9 @@ The following features are supported:
 - Sharing revision cards with other learners.
 - iCloud synchronization between supported Apple devices:
   iPhone, iPad and Mac.
+- Google Drive synchronization between supported Android and
+  Windows devices when using the same Google account.
+- Available on iPhone, iPad, Mac, Android and Windows.
 - Offline study capabilities.
 
 IMPORTANT ACCURACY RULES
@@ -106,13 +111,17 @@ Do not claim RecallNote:
 - Offers OCR or text recognition.
 - Supports real-time collaborative editing.
 - Synchronizes Apple and Android devices through iCloud.
+- Synchronizes Apple and Android/Windows devices with each other.
+- Offers identical PDF annotation features on every platform.
 - Offers any unverified feature.
 
 Do not invent subscription prices, purchase requirements,
 free-trial conditions, ratings or testimonials.
 
 Do not assume every PDF annotation feature is available
-on every platform.
+on every platform. Explain that iCloud sync is for Apple devices
+and Google Drive sync is for Android and Windows devices.
+Do not imply synchronization between these two groups.
 
 When describing a feature, explain how a student can use it
 in a practical study scenario.
@@ -380,12 +389,23 @@ annotate supported PDF documents and use
 practice notebooks with RecallNote.
 </p>
 <p>
-Continue studying across iPhone, iPad and Mac
-with iCloud synchronization.
+Sync across supported Apple devices with iCloud,
+or between Android and Windows with Google Drive.
+These are separate synchronization systems.
 </p>
 <p>
 <a href="{APP_URL}">
-View RecallNote on the App Store
+Download for iPhone, iPad and Mac (App Store)
+</a>
+</p>
+<p>
+<a href="{ANDROID_URL}">
+Download for Android (Google Play)
+</a>
+</p>
+<p>
+<a href="{WINDOWS_URL}">
+Download for Windows (Microsoft Store)
 </a>
 </p>
 <p>
@@ -513,6 +533,12 @@ guides and digital note-taking tips.
 <a href="/recallnote/">
 Discover RecallNote
 </a>
+</p>
+<p>
+Get RecallNote:
+<a href="{APP_URL}">App Store</a> ·
+<a href="{ANDROID_URL}">Google Play</a> ·
+<a href="{WINDOWS_URL}">Microsoft Store</a>
 </p>
 
 </body>
