@@ -298,6 +298,14 @@ article = re.sub(
 page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4WDWDGBLQE"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){{dataLayer.push(arguments);}}
+gtag('js', new Date());
+gtag('config', 'G-4WDWDGBLQE');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{safe_title} | CEglobal</title>
@@ -395,6 +403,24 @@ Learn more about RecallNote
 # Write only after article validation succeeds.
 filename.write_text(page, encoding="utf-8")
 
+# Add GA4 to previously published articles without altering their content.
+analytics_snippet = """<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4WDWDGBLQE"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-4WDWDGBLQE');
+</script>
+"""
+for existing_post in POSTS.glob("*.html"):
+    existing_html = existing_post.read_text(encoding="utf-8")
+    if "G-4WDWDGBLQE" not in existing_html and "<head>" in existing_html:
+        existing_post.write_text(
+            existing_html.replace("<head>", "<head>\n" + analytics_snippet, 1),
+            encoding="utf-8"
+        )
+
 posts = sorted(
     POSTS.glob("*.html"),
     reverse=True
@@ -430,6 +456,14 @@ for post in posts:
 index = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4WDWDGBLQE"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){{dataLayer.push(arguments);}}
+gtag('js', new Date());
+gtag('config', 'G-4WDWDGBLQE');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Study Tips &amp; Guides | CEglobal</title>
