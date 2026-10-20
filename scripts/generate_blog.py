@@ -47,14 +47,14 @@ today = datetime.now(
 
 filename = POSTS / f"{today}.html"
 
-# Keep previously generated pages on the working Google tag loader.
-# Run this even when today's article already exists.
+# Keep existing blog pages on the GA4 loader, including on days
+# when an article has already been generated.
 for existing_page in [BLOG / "index.html", *POSTS.glob("*.html")]:
     if existing_page.exists():
         existing_html = existing_page.read_text(encoding="utf-8")
         updated_html = existing_html.replace(
-            "https://www.googletagmanager.com/gtag/js?id=G-4WDWDGBLQE",
             "https://www.googletagmanager.com/gtag/js?id=AW-17736987455",
+            "https://www.googletagmanager.com/gtag/js?id=G-4WDWDGBLQE",
         )
         if updated_html != existing_html:
             existing_page.write_text(updated_html, encoding="utf-8")
@@ -320,7 +320,7 @@ page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17736987455"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4WDWDGBLQE"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){{dataLayer.push(arguments);}}
@@ -437,7 +437,7 @@ filename.write_text(page, encoding="utf-8")
 
 # Add GA4 to previously published articles without altering their content.
 analytics_snippet = """<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17736987455"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4WDWDGBLQE"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -489,7 +489,7 @@ index = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17736987455"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4WDWDGBLQE"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){{dataLayer.push(arguments);}}
