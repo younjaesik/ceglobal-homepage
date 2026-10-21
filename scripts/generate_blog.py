@@ -282,25 +282,50 @@ def validate_article(data):
     return title, description, article, len(words)
 
 
-response = client.responses.create(
-    model="gpt-4.1-mini",
-    instructions=INSTRUCTIONS,
-    input=(
-        f"Write a detailed, original educational article "
-        f"about this topic: {topic}. "
+# Retry when the generated article fails validation. Never publish invalid content.
+MAX_ARTICLE_ATTEMPTS = 3
+validation_feedback = ""
+
+for attempt in range(1, MAX_ARTICLE_ATTEMPTS + 1):
+    print(f"Generating article (attempt {attempt}/{MAX_ARTICLE_ATTEMPTS})")
+    request_text = (
+        f"Write a detailed, original educational article about this topic: {topic}. "
         "Return the complete article as a valid JSON object. "
-        "Follow all accuracy, structure and formatting rules."
-    ),
-    text={"format": {"type": "json_object"}},
-    max_output_tokens=4500
-)
+        "Follow all accuracy, structure and formatting rules. "
+        "IMPORTANT: Do not describe automatic spaced repetition, automatic "
+        "review scheduling, or any other unsupported feature as a RecallNote "
+        "capability. You may describe manual study planning without attributing "
+        "automation to RecallNote."
+    )
+    if validation_feedback:
+        request_text += (
+            " The previous draft failed validation for this reason: "
+            + validation_feedback
+            + ". Rewrite the article to correct the issue."
+        )
 
-if not response.output_text:
-    raise ValueError("AI returned no article content.")
+    response = client.responses.create(
+        model="gpt-4.1-mini",
+        instructions=INSTRUCTIONS,
+        input=request_text,
+        text={"format": {"type": "json_object"}},
+        max_output_tokens=4500
+    )
 
-data = json.loads(response.output_text)
-
-title, description, article, word_count = validate_article(data)
+    try:
+        if not response.output_text:
+            raise ValueError("AI returned no article content.")
+        data = json.loads(response.output_text)
+        title, description, article, word_count = validate_article(data)
+        break
+    except (ValueError, json.JSONDecodeError) as exc:
+        validation_feedback = str(exc)
+        print(f"Article validation failed (attempt {attempt}): {exc}")
+        if attempt == MAX_ARTICLE_ATTEMPTS:
+            raise RuntimeError(
+                f"Article generation failed after {MAX_ARTICLE_ATTEMPTS} attempts. "
+                f"Last validation error: {exc}"
+            ) from exc
 
 print(f"Validated article: {title}")
 print(f"Word count: {word_count}")
