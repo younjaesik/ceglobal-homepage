@@ -428,7 +428,7 @@ footer{{
 <div class="cta">
 <h2>Study with RecallNote</h2>
 <p>
-Organize study materials, review flashcards,
+Organize study materials, review flashcards with spaced repetition,
 annotate supported PDF documents and use
 practice notebooks with RecallNote.
 </p>
