@@ -107,6 +107,26 @@ h1{line-height:1.3}h2{margin-top:30px}a{color:#1557b0}
 </style>'''
 
 
+
+
+def add_promo_images():
+    """Insert the linked promo image once into existing and future articles."""
+    promo = (
+        f'<a href="{APP_URL}" target="_blank" rel="noopener noreferrer" '
+        'aria-label="Get PicPost EZ on the App Store">\n'
+        '<img src="/blog/images/picpost_ad.png" '
+        'alt="PicPost EZ: take photos, add notes, and share" '
+        'loading="lazy" '
+        'style="display:block;width:100%;height:auto;margin:30px auto;border-radius:12px;">\n'
+        '</a>'
+    )
+    for post in POSTS.glob('*.html'):
+        body = post.read_text(encoding='utf-8')
+        if '/blog/images/picpost_ad.png' not in body and '</article>' in body:
+            body = body.replace('</article>', '</article>\n' + promo, 1)
+            post.write_text(body, encoding='utf-8')
+            print(f'Added promo image to {post.name}')
+
 def write_index_and_sitemap():
     posts = sorted(POSTS.glob('*.html'), reverse=True)
     items = []
@@ -139,7 +159,8 @@ def write_index_and_sitemap():
 
 def main():
     if FILE.exists():
-        print(f'Article for {TODAY} already exists; updating index only.')
+        print(f'Article for {TODAY} already exists; updating index and promo images.')
+        add_promo_images()
         write_index_and_sitemap()
         return
     topic = TOPICS[len(list(POSTS.glob('*.html'))) % len(TOPICS)]
@@ -180,6 +201,7 @@ Share to Threads, or copy your notes for pasting into Instagram and Facebook pos
 <p><a href="{APP_URL}">Get PicPost EZ for iPhone on the App Store</a></p></div>
 <footer><small>© CEglobal</small></footer></main></body></html>'''
     FILE.write_text(page, encoding='utf-8')
+    add_promo_images()
     write_index_and_sitemap()
     print(f'Created {FILE.relative_to(ROOT)}')
 
