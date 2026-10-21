@@ -146,7 +146,11 @@ def main():
     client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
     error = ''
     for attempt in range(3):
-        request = f'Write an original English article about: {topic}. Keep it concise (400-550 words).'
+        request = (
+            f'Write an original English article about: {topic}. '
+            'Keep it concise (400-550 words). '
+            'Return the complete article as a valid JSON object.'
+        )
         if error:
             request += f' The previous draft failed validation: {error}. Correct it.'
         response = client.responses.create(
