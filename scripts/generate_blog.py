@@ -77,15 +77,15 @@ study guides for students and exam candidates.
 
 EDITORIAL REQUIREMENTS
 
-1. Write an original article of 700-1100 English words.
+1. Write an original article of 400-550 English words.
 2. Focus on solving one specific study problem.
 3. Give concrete, actionable steps and realistic examples.
 4. Use clear, natural English suitable for US and UK readers.
-5. Avoid generic motivational filler and repetitive advice.
+5. Avoid generic motivational filler and repetitive advice. Keep the article concise.
 6. Explain why each recommended study technique is useful.
 7. Include at least one practical study workflow.
 8. Include examples relevant to real exam preparation.
-9. Use informative headings and short paragraphs.
+9. Use 3-4 informative headings and short paragraphs.
 10. Never fabricate scientific findings, statistics or citations.
 
 RECALLNOTE: VERIFIED FEATURES
@@ -243,7 +243,7 @@ def validate_article(data):
     plain_text = html.unescape(plain_text)
     words = re.findall(r"\b[\w'-]+\b", plain_text)
 
-    if not 650 <= len(words) <= 1200:
+    if not 350 <= len(words) <= 600:
         raise ValueError(
             f"Unexpected article length: {len(words)} words."
         )
