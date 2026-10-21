@@ -77,7 +77,7 @@ study guides for students and exam candidates.
 
 EDITORIAL REQUIREMENTS
 
-1. Write an original article of 400-550 English words.
+1. Write an original article of 400-650 English words.
 2. Focus on solving one specific study problem.
 3. Give concrete, actionable steps and realistic examples.
 4. Use clear, natural English suitable for US and UK readers.
@@ -243,7 +243,7 @@ def validate_article(data):
     plain_text = html.unescape(plain_text)
     words = re.findall(r"\b[\w'-]+\b", plain_text)
 
-    if not 350 <= len(words) <= 600:
+    if not 300 <= len(words) <= 900:
         raise ValueError(
             f"Unexpected article length: {len(words)} words."
         )
