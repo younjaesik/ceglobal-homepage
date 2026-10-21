@@ -95,6 +95,7 @@ RecallNote is a study and revision application.
 The following features are supported:
 
 - Flashcards for reviewing questions and answers.
+- Spaced repetition review using revision cards.
 - Question-first flashcard review with answer reveal.
 - Exam-focused quick review mode for rapid revision.
 - Review selection by subject and importance in
@@ -118,7 +119,7 @@ Do not claim RecallNote:
 - Converts Word, PowerPoint or other files to PDF.
 - Automatically generates flashcards using AI.
 - Provides AI tutoring or AI-generated summaries.
-- Automatically schedules spaced repetition.
+- Predicts the exact moment a learner will forget something.
 - Automatically grades exams.
 - Offers OCR or text recognition.
 - Supports real-time collaborative editing.
@@ -197,7 +198,6 @@ Write the entire article in English.
 FORBIDDEN_PATTERNS = [
     r"\bAI[- ]generated flashcards\b",
     r"\bAI[- ]powered (?:tutor|summar(?:y|ies|ization))\b",
-    r"\bautomatic(?:ally)? (?:spaced repetition|scheduling)\b",
     r"\bautomatically (?:generate|create) (?:PDFs?|flashcards)\b",
     r"\bconvert(?:s|ing)? (?:Word|PowerPoint|documents?) to PDF\b",
     r"\bOCR\b",
@@ -292,10 +292,9 @@ for attempt in range(1, MAX_ARTICLE_ATTEMPTS + 1):
         f"Write a detailed, original educational article about this topic: {topic}. "
         "Return the complete article as a valid JSON object. "
         "Follow all accuracy, structure and formatting rules. "
-        "IMPORTANT: Do not describe automatic spaced repetition, automatic "
-        "review scheduling, or any other unsupported feature as a RecallNote "
-        "capability. You may describe manual study planning without attributing "
-        "automation to RecallNote."
+        "RecallNote supports spaced repetition with revision cards. "
+        "You may describe spaced repetition as a supported feature. "
+        "Do not invent unrelated features or claim exact forgetting-time prediction."
     )
     if validation_feedback:
         request_text += (
@@ -391,6 +390,14 @@ a{{
     border-radius:12px;
     margin-top:36px;
 }}
+.recallnote-banner{{
+    display:block;
+    width:100%;
+    max-width:500px;
+    height:auto;
+    margin:24px auto 0;
+    border-radius:12px;
+}}
 footer{{
     margin-top:36px;
     font-size:14px;
@@ -448,6 +455,11 @@ Download for Windows (Microsoft Store)
 <p>
 <a href="/recallnote/">
 Learn more about RecallNote
+</a>
+</p>
+<p>
+<a href="/recallnote/" aria-label="Explore RecallNote and download for your device">
+<img class="recallnote-banner" src="/blog/images/recallnote_ad.png" alt="RecallNote: Stop forgetting. Start RecallNote. Download now." loading="lazy">
 </a>
 </p>
 </div>
