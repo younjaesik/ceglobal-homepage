@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,6 +17,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CEglobal | Pachira - Points & Coupons</title>
 
+  <script>
+    (function () {
+      var ua = navigator.userAgent || "";
+      var isMobileDevice =
+        /Android|iPhone|iPad|iPod|Mobile|Tablet|Silk|Kindle/i.test(ua) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ||
+        (navigator.maxTouchPoints > 1 && screen.width <= 1366);
+
+      if (isMobileDevice) {
+        document.documentElement.classList.add("mobile-device");
+      }
+    })();
+  </script>
+
   <style>
     body { font-family: "Arial"; margin:0; background:#f9f9f9; color:#333; }
     header { background:#004080; color:white; padding:1.5rem; text-align:center; }
@@ -31,6 +46,43 @@
 
     .store-links { display:flex; justify-content:center; gap:2rem; }
     .store-links img { height:55px; }
+
+    /* Android download and PC-only QR */
+    .android-download {
+      display: flex;
+      align-items: center;
+    }
+
+    .store-links .android-qr {
+      display: none !important;
+    }
+
+    @media screen and (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+      html:not(.mobile-device) .store-links .android-qr {
+        display: block !important;
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        flex-shrink: 0;
+        margin-left: 16px;
+      }
+    }
+
+    html.mobile-device .store-links .android-qr {
+      display: none !important;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .store-links .android-qr {
+        display: none !important;
+      }
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      .store-links .android-qr {
+        display: none !important;
+      }
+    }
 
     .video-container {
       position:relative; width:100%; padding-bottom:56.25%;
@@ -105,12 +157,21 @@
 <section>
   <h2>Télécharger</h2>
   <div class="store-links">
-    <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3">
-      <img src="google.png">
-    </a>
+
+    <div class="android-download">
+      <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3">
+        <img src="google.png">
+      </a>
+
+      <img src="pachiraand.png"
+           alt="Pachira Android QR Code"
+           class="android-qr">
+    </div>
+
     <a href="https://apps.apple.com/fr/app/id6751176799">
       <img src="apple.png">
     </a>
+
   </div>
 </section>
 
@@ -123,4 +184,3 @@
 
 </body>
 </html>
-
