@@ -47,17 +47,7 @@ today = datetime.now(
 
 filename = POSTS / f"{today}.html"
 
-# Keep existing blog pages on the GA4 loader, including on days
-# when an article has already been generated.
-for existing_page in [BLOG / "index.html", *POSTS.glob("*.html")]:
-    if existing_page.exists():
-        existing_html = existing_page.read_text(encoding="utf-8")
-        updated_html = existing_html.replace(
-            "https://www.googletagmanager.com/gtag/js?id=AW-17736987455",
-            "https://www.googletagmanager.com/gtag/js?id=G-4WDWDGBLQE",
-        )
-        if updated_html != existing_html:
-            existing_page.write_text(updated_html, encoding="utf-8")
+# Existing published posts are intentionally left unchanged.
 
 if filename.exists():
     print("Today's article already exists. Skipping.")
@@ -353,6 +343,15 @@ gtag('config', 'G-4WDWDGBLQE');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+(function() {{
+    var ua = navigator.userAgent || "";
+    var mobile = /Android|iPhone|iPad|iPod|Mobile|Tablet|Silk|Kindle/i.test(ua)
+        || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+        || (navigator.maxTouchPoints > 1 && screen.width <= 1366);
+    if (mobile) document.documentElement.classList.add("mobile-device");
+}})();
+</script>
 <title>{safe_title} | CEglobal</title>
 <meta name="description" content="{safe_description}">
 <link rel="canonical" href="{SITE}/blog/posts/{today}.html">
@@ -389,6 +388,24 @@ a{{
     background:#eef4ff;
     border-radius:12px;
     margin-top:36px;
+}}
+.download-row{{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+    margin:12px 0;
+}}
+.download-row .download-qr{{
+    display:none;
+}}
+@media screen and (min-width:1025px) and (hover:hover) and (pointer:fine){{
+    html:not(.mobile-device) .download-row .download-qr{{
+        display:block;
+        width:100px;
+        height:100px;
+        object-fit:contain;
+    }}
 }}
 .recallnote-banner{{
     display:block;
@@ -437,16 +454,18 @@ Sync across supported Apple devices with iCloud,
 or between Android and Windows with Google Drive.
 These are separate synchronization systems.
 </p>
-<p>
+<div class="download-row">
 <a href="{APP_URL}">
 Download for iPhone, iPad and Mac (App Store)
 </a>
-</p>
-<p>
+<img class="download-qr" src="/recallnoteios.png" alt="RecallNote App Store QR code" loading="lazy">
+</div>
+<div class="download-row">
 <a href="{ANDROID_URL}">
 Download for Android (Google Play)
 </a>
-</p>
+<img class="download-qr" src="/recallnoteand.png" alt="RecallNote Google Play QR code" loading="lazy">
+</div>
 <p>
 <a href="{WINDOWS_URL}">
 Download for Windows (Microsoft Store)
@@ -472,23 +491,7 @@ Learn more about RecallNote
 # Write only after article validation succeeds.
 filename.write_text(page, encoding="utf-8")
 
-# Add GA4 to previously published articles without altering their content.
-analytics_snippet = """<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4WDWDGBLQE"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-4WDWDGBLQE');
-</script>
-"""
-for existing_post in POSTS.glob("*.html"):
-    existing_html = existing_post.read_text(encoding="utf-8")
-    if "G-4WDWDGBLQE" not in existing_html and "<head>" in existing_html:
-        existing_post.write_text(
-            existing_html.replace("<head>", "<head>\n" + analytics_snippet, 1),
-            encoding="utf-8"
-        )
+# Do not modify previously published articles.
 
 posts = sorted(
     POSTS.glob("*.html"),
