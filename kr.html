@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,6 +17,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CEglobal | Pachira – 포인트 & 기프티콘</title>
+
+  <script>
+    (function () {
+      var ua = navigator.userAgent || "";
+      var isMobileDevice =
+        /Android|iPhone|iPad|iPod|Mobile|Tablet|Silk|Kindle/i.test(ua) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ||
+        (navigator.maxTouchPoints > 1 && screen.width <= 1366);
+
+      if (isMobileDevice) {
+        document.documentElement.classList.add("mobile-device");
+      }
+    })();
+  </script>
 
   <style>
     body {
@@ -97,6 +112,46 @@
       display: block;
     }
 
+    /* Android 다운로드 버튼과 PC 전용 QR */
+    .android-download {
+      display: flex;
+      align-items: center;
+    }
+
+    /* 기본적으로 모든 기기에서 QR 숨김 */
+    .store-links .android-qr {
+      display: none !important;
+    }
+
+    /* PC에서만 QR 표시 */
+    @media screen and (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+      html:not(.mobile-device) .store-links .android-qr {
+        display: block !important;
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        flex-shrink: 0;
+        margin-left: 16px;
+      }
+    }
+
+    /* 모바일 및 태블릿에서는 항상 숨김 */
+    html.mobile-device .store-links .android-qr {
+      display: none !important;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .store-links .android-qr {
+        display: none !important;
+      }
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      .store-links .android-qr {
+        display: none !important;
+      }
+    }
+
     .video-container {
       position: relative;
       width: 100%;
@@ -171,8 +226,8 @@
       <img src="point.PNG" alt="Pachira 아이콘" class="icon">
 
       <p>
-        <span class="title-green">Pachira – 포인트 & 기프티콘</span> 은 빠르고 가벼운 앱으로,  
-        <span class="highlight-blue">멤버십 카드, 쿠폰, e-기프티콘</span>을  
+        <span class="title-green">Pachira – 포인트 & 기프티콘</span> 은 빠르고 가벼운 앱으로,
+        <span class="highlight-blue">멤버십 카드, 쿠폰, e-기프티콘</span>을
         <span class="tap-green">단 한 번의 탭으로</span> 간편하게 관리할 수 있습니다. (회원가입 불필요)
       </p>
 
@@ -183,16 +238,16 @@
         회원가입 필요 없음
       </p><br>
       <p>
-  <span class="highlight-blue">To Buy · To Do</span><br>
-  쇼핑 목록 관리 및 요일별 · 매일 할 일 알림 기능
-</p>
-      
+        <span class="highlight-blue">To Buy · To Do</span><br>
+        쇼핑 목록 관리 및 요일별 · 매일 할 일 알림 기능
+      </p>
+
     </section>
 
     <section>
       <h2>앱 미리보기</h2>
       <div class="video-container">
-        <iframe 
+        <iframe
           src="https://www.youtube.com/embed/KfFGcUlA89w"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
@@ -200,24 +255,30 @@
       </div>
 
       <div class="video-container">
-  <iframe
-    src="https://www.youtube.com/embed/GRXMRUrhSDY"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-      
+        <iframe
+          src="https://www.youtube.com/embed/GRXMRUrhSDY"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
     </section>
 
     <section>
       <h2>다운로드</h2>
       <div class="store-links">
 
-        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
-           target="_blank"
-           onclick="gtag('event', 'download_android_kr', { 'send_to': 'AW-17736987455', 'value': 1 });">
-          <img src="google.png" alt="Google Play">
-        </a>
+        <div class="android-download">
+          <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
+             target="_blank"
+             onclick="gtag('event', 'download_android_kr', { 'send_to': 'AW-17736987455', 'value': 1 });">
+            <img src="google.png" alt="Google Play">
+          </a>
+
+          <img src="pachiraand.png"
+               alt="Pachira Android QR Code"
+               class="android-qr">
+        </div>
 
         <a href="https://apps.apple.com/kr/app/id6751176799"
            target="_blank"
@@ -257,5 +318,3 @@
 
 </body>
 </html>
-
-
