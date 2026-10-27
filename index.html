@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,7 +78,6 @@
       text-align: center;
     }
 
-    /* ✅ 추가 */
     .desc-left {
       text-align: left !important;
     }
@@ -162,6 +162,61 @@
       height: 100%;
       border: 0;
     }
+
+    /* QR codes: hidden by default */
+    .desktop-qr {
+      display: none !important;
+    }
+
+    /* Desktop download links */
+    .app-downloads {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0 6px;
+    }
+
+    .app-downloads a {
+      white-space: nowrap;
+    }
+
+    .app-download-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Desktop only: display QR codes */
+    @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+      .desktop-qr {
+        display: block !important;
+        width: 100px !important;
+        height: 100px !important;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .store-row .desktop-qr {
+        position: absolute;
+        left: 290px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .wallet-download {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .app-download-item {
+        gap: 12px;
+      }
+
+      .app-downloads {
+        gap: 12px 16px;
+      }
+    }
   </style>
 </head>
 
@@ -218,37 +273,40 @@
   <h2>Download</h2>
   <div class="store-links">
 
-      <div class="store-row">
-        <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" target="_blank">
-          <img src="google.png" alt="Google Play">
-        </a>
-      </div>
-
-      <div class="store-row">
-        <a href="https://apps.apple.com/ca/app/id6751176799" target="_blank">
-          <img src="apple.png" alt="App Store">
-        </a>
-        <span class="store-code">CA</span>
-      </div>
-
-      <div class="store-row">
-        <a href="https://apps.apple.com/gb/app/id6751176799" target="_blank">
-          <img src="apple.png" alt="App Store">
-        </a>
-        <span class="store-code">UK</span>
-      </div>
-
-      <div class="store-row">
-        <a href="https://apps.apple.com/au/app/id6751176799" target="_blank">
-          <img src="apple.png" alt="App Store">
-        </a>
-        <span class="store-code">AU</span>
-      </div>
-
+    <div class="store-row">
+      <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3" target="_blank">
+        <img src="google.png" alt="Google Play">
+      </a>
+      <img src="pachiraand.png"
+           alt="Pachira Android QR Code"
+           class="desktop-qr">
     </div>
+
+    <div class="store-row">
+      <a href="https://apps.apple.com/ca/app/id6751176799" target="_blank">
+        <img src="apple.png" alt="App Store">
+      </a>
+      <span class="store-code">CA</span>
+    </div>
+
+    <div class="store-row">
+      <a href="https://apps.apple.com/gb/app/id6751176799" target="_blank">
+        <img src="apple.png" alt="App Store">
+      </a>
+      <span class="store-code">UK</span>
+    </div>
+
+    <div class="store-row">
+      <a href="https://apps.apple.com/au/app/id6751176799" target="_blank">
+        <img src="apple.png" alt="App Store">
+      </a>
+      <span class="store-code">AU</span>
+    </div>
+
+  </div>
 </section>
 
-  <section>
+<section>
   <h2>🛍️ Pachira Wallet – Upgraded Version</h2>
 
   <div class="desc-left"
@@ -273,16 +331,20 @@
 
     ⏰ Reminders for shopping and daily tasks.<br><br>
 
-    <a href="https://play.google.com/store/apps/details?id=com.ceglobal.pachirawallet"
-       target="_blank"
-       rel="noopener noreferrer"
-       style="font-size: 21px; font-weight: bold;">
-      📲 Download Pachira Wallet on Google Play
-    </a>
+    <div class="wallet-download">
+      <a href="https://play.google.com/store/apps/details?id=com.ceglobal.pachirawallet"
+         target="_blank"
+         rel="noopener noreferrer"
+         style="font-size: 21px; font-weight: bold;">
+        📲 Download Pachira Wallet on Google Play
+      </a>
+      <img src="pachirawallet.png"
+           alt="Pachira Wallet QR Code"
+           class="desktop-qr">
+    </div>
 
   </div>
 </section>
-
 
 <section>
   <h2>More Apps by CEglobal</h2>
@@ -296,11 +358,27 @@
 
     Flashcards, PDF notes, and smart review tools.<br>
 
-    <a href="https://apps.apple.com/app/id6779927785" target="_blank">App Store (iOS / Mac)</a>
-    &nbsp; | &nbsp;
-    <a href="https://play.google.com/store/apps/details?id=com.pachira.recallnote" target="_blank">Google Play (Android)</a>
-    &nbsp; | &nbsp;
-    <a href="https://apps.microsoft.com/detail/9P3MRK8KNDL8" target="_blank">Microsoft Store (Windows)</a>
+    <div class="app-downloads">
+      <span class="app-download-item">
+        <a href="https://apps.apple.com/app/id6779927785" target="_blank">App Store (iOS / Mac)</a>
+        <img src="recallnoteios.png"
+             alt="RecallNote iOS QR Code"
+             class="desktop-qr">
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://play.google.com/store/apps/details?id=com.pachira.recallnote" target="_blank">Google Play (Android)</a>
+        <img src="recallnoteand.png"
+             alt="RecallNote Android QR Code"
+             class="desktop-qr">
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://apps.microsoft.com/detail/9P3MRK8KNDL8" target="_blank">Microsoft Store (Windows)</a>
+      </span>
+    </div>
   </div>
 
   <div class="desc-left" style="font-size: 19px; line-height: 1.8;">
@@ -312,13 +390,24 @@
 
     Capture photos, add notes, and share easily.<br>
 
-    <a href="https://apps.apple.com/app/id6821620482" target="_blank">App Store (iOS)</a>
-    &nbsp; | &nbsp;
-    <a href="https://play.google.com/store/apps/details?id=com.pachira.picpost" target="_blank">Google Play (Android)</a>
+    <div class="app-downloads">
+      <span class="app-download-item">
+        <a href="https://apps.apple.com/app/id6821620482" target="_blank">App Store (iOS)</a>
+        <img src="picpostEZios.png"
+             alt="PicPost EZ iOS QR Code"
+             class="desktop-qr">
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://play.google.com/store/apps/details?id=com.pachira.picpost" target="_blank">Google Play (Android)</a>
+        <img src="picpostEZand.png"
+             alt="PicPost Android QR Code"
+             class="desktop-qr">
+      </span>
+    </div>
   </div>
 </section>
-
-  
 
 <section>
   <h2>Contact</h2>
@@ -333,43 +422,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
