@@ -1,4 +1,4 @@
-"""Generate one concise English PicPost EZ iOS article per Korea-local day."""
+"""Generate one concise English PicPost article per Korea-local day."""
 import html
 import json
 import os
@@ -16,6 +16,7 @@ POSTS = BLOG / 'posts'
 POSTS.mkdir(parents=True, exist_ok=True)
 SITE = 'https://ceglobal.org'
 APP_URL = 'https://apps.apple.com/app/id6821620482'
+ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.pachira.picpost'
 GA_ID = 'G-4WDWDGBLQE'
 TODAY = datetime.now(ZoneInfo('Asia/Seoul')).strftime('%Y-%m-%d')
 FILE = POSTS / f'{TODAY}.html'
@@ -39,13 +40,13 @@ TOPICS = [
 ]
 
 INSTRUCTIONS = '''You are an English-language editorial writer for CEglobal, maker of PicPost EZ.
-Write a useful, original 400-550 word article for iPhone users on the given topic.
+Write a useful, original 400-550 word article on the given topic.
 Use 3-4 clear subheadings, short paragraphs, concrete tips, and one realistic example.
 Be helpful even to readers who do not install the app. Avoid keyword stuffing,
 unsupported research, testimonials, prices, and exaggerated marketing claims.
 Mention PicPost EZ naturally once or twice in the article, with a relevant use case.
 
-VERIFIED PICPOST EZ FEATURES (iOS):
+VERIFIED PICPOST FEATURES (iOS PicPost EZ and Android PicPost):
 - Camera, built-in photo album, and import of existing photos from Apple Photos.
 - Add text notes to individual photos.
 - Select multiple photos and combine their individual notes into one text for sharing.
@@ -54,8 +55,9 @@ VERIFIED PICPOST EZ FEATURES (iOS):
   so the user can paste them into the post.
 - Share photos with messaging apps.
 
-ACCURACY: This article is ONLY about the iOS version. Never mention Android,
-Google Play, Windows, Mac availability, or unverified features. Do not claim
+ACCURACY: PicPost EZ is the iOS app; PicPost is the Android app.
+Both are available for their respective platforms. Avoid claiming feature parity
+where not verified. Never mention Windows, Mac availability, or unverified features. Do not claim
 fully automatic posting without user action, automatic publishing to Instagram
 or Facebook, AI caption generation, cloud sync, or automatic handwriting recognition.
 Do not invent subscription or purchase terms.
@@ -86,8 +88,8 @@ def validate(data):
         raise ValueError(f'Article length {count}, expected 350-600 words')
     if 'PicPost EZ' not in plain:
         raise ValueError('App not mentioned')
-    if re.search(r'\b(Android|Google Play|Windows|MacOS|macOS)\b', plain, re.I):
-        raise ValueError('Non-iOS platform mentioned')
+    if re.search(r'\b(Windows|MacOS|macOS)\b', plain, re.I):
+        raise ValueError('Unsupported platform mentioned')
     return title, description, article
 
 
@@ -103,6 +105,12 @@ body{margin:0;background:#f7f8fa;color:#202631;font:16px/1.75 system-ui,-apple-s
 main{max-width:780px;margin:36px auto;padding:32px;background:white;border-radius:14px}
 h1{line-height:1.3}h2{margin-top:30px}a{color:#1557b0}
 .cta{background:#eef4ff;border-radius:12px;padding:20px;margin-top:32px}
+.download-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0}
+.download-row p{margin:0}
+.download-qr{display:none;width:100px;height:100px;object-fit:contain;flex-shrink:0}
+@media screen and (min-width:1025px) and (hover:hover) and (pointer:fine){
+html:not(.mobile-device) .download-qr{display:block}
+}
 @media(max-width:820px){main{margin:12px;padding:20px}}
 </style>'''
 
@@ -110,7 +118,7 @@ h1{line-height:1.3}h2{margin-top:30px}a{color:#1557b0}
 
 
 def add_promo_images():
-    """Insert the linked promo image once into existing and future articles."""
+    """Insert the linked promo image into today's new article only."""
     promo = (
         f'<a href="{APP_URL}" target="_blank" rel="noopener noreferrer" '
         'aria-label="Get PicPost EZ on the App Store">\n'
@@ -120,7 +128,7 @@ def add_promo_images():
         'style="display:block;width:100%;height:auto;margin:30px auto;border-radius:12px;">\n'
         '</a>'
     )
-    for post in POSTS.glob('*.html'):
+    for post in [FILE] if FILE.exists() else []:
         body = post.read_text(encoding='utf-8')
         if '/blog/images/picpost_ad.png' not in body and '</article>' in body:
             body = body.replace('</article>', '</article>\n' + promo, 1)
@@ -145,6 +153,7 @@ def write_index_and_sitemap():
 <p>Simple guides for capturing photos, remembering their stories, and sharing them.</p>
 <ul>{''.join(items)}</ul>
 <p><a href="{APP_URL}">Get PicPost EZ for iPhone on the App Store</a></p>
+<p><a href="{ANDROID_URL}">Get PicPost for Android on Google Play</a></p>
 </main></body></html>'''
     (BLOG / 'index.html').write_text(index, encoding='utf-8')
     sitemap = Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
@@ -159,8 +168,7 @@ def write_index_and_sitemap():
 
 def main():
     if FILE.exists():
-        print(f'Article for {TODAY} already exists; updating index and promo images.')
-        add_promo_images()
+        print(f'Article for {TODAY} already exists; updating index only.')
         write_index_and_sitemap()
         return
     topic = TOPICS[len(list(POSTS.glob('*.html'))) % len(TOPICS)]
@@ -186,19 +194,38 @@ def main():
     else:
         raise RuntimeError(f'Failed to generate a valid article after 3 tries: {error}')
 
+    # New articles only: do not rewrite previously published article HTML.
     page = f'''<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)} | CEglobal</title>
 <meta name="description" content="{html.escape(description, quote=True)}">
 <link rel="canonical" href="{SITE}/picpost/blog/posts/{TODAY}.html">
-{analytics()}{page_style()}</head><body><main>
+{analytics()}{page_style()}
+<script>
+(function(){{
+  var ua=navigator.userAgent||'';
+  var mobile=/Android|iPhone|iPad|iPod|Mobile|Tablet|Silk|Kindle/i.test(ua)
+    ||(navigator.platform==='MacIntel' && navigator.maxTouchPoints>1)
+    ||(navigator.maxTouchPoints>1 && screen.width<=1366);
+  if(mobile)document.documentElement.classList.add('mobile-device');
+}})();
+</script>
+</head><body><main>
 <nav><a href="/">CEglobal</a> / <a href="/picpost/blog/">PicPost EZ Blog</a></nav>
 <h1>{html.escape(title)}</h1><p><small>Published {TODAY}</small></p>
 <article>{article}</article>
 <div class="cta"><h2>Capture, Note &amp; Share with PicPost EZ</h2>
 <p>Take photos, add notes to individual pictures, and combine notes when sharing multiple photos.
 Share to Threads, or copy your notes for pasting into Instagram and Facebook posts.</p>
-<p><a href="{APP_URL}">Get PicPost EZ for iPhone on the App Store</a></p></div>
+<div class="download-row">
+<p><a href="{APP_URL}">Get PicPost EZ for iPhone on the App Store</a></p>
+<img class="download-qr" src="/picpostEZios.png" alt="PicPost EZ iOS App Store QR code" loading="lazy">
+</div>
+<div class="download-row">
+<p><a href="{ANDROID_URL}">Get PicPost for Android on Google Play</a></p>
+<img class="download-qr" src="/picpostEZand.png" alt="PicPost Android Google Play QR code" loading="lazy">
+</div>
+</div>
 <footer><small>© CEglobal</small></footer></main></body></html>'''
     FILE.write_text(page, encoding='utf-8')
     add_promo_images()
