@@ -16,6 +16,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CEglobal | Pachira – Punkte & Coupons</title>
 
+  <!-- Mobile/tablet detection -->
+  <script>
+    (function () {
+      var ua = navigator.userAgent || "";
+      var isMobileDevice =
+        /Android|iPhone|iPad|iPod|Mobile|Tablet|Silk|Kindle/i.test(ua) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ||
+        (navigator.maxTouchPoints > 1 && screen.width <= 1366);
+
+      if (isMobileDevice) {
+        document.documentElement.classList.add("mobile-device");
+      }
+    })();
+  </script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -114,7 +129,6 @@
       line-height: 1.6;
     }
 
-    /* ✅ 추가된 부분 */
     .desc-left {
       text-align: left !important;
     }
@@ -152,27 +166,42 @@
       display: block;
     }
 
-    /* Pachira Android QR - desktop only */
     .android-download {
       display: flex;
       align-items: center;
     }
 
-    .android-qr {
-      display: none;
+    /* QR is hidden by default on every device */
+    .store-links .android-qr {
+      display: none !important;
     }
 
-    @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
-      .android-download {
-        gap: 16px;
-      }
-
-      .store-links .android-qr {
-        display: block;
+    /* Show QR on desktop computers only */
+    @media screen and (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+      html:not(.mobile-device) .store-links .android-qr {
+        display: block !important;
         width: 100px;
         height: 100px;
         object-fit: contain;
         flex-shrink: 0;
+        margin-left: 16px;
+      }
+    }
+
+    /* Always hide on mobile and tablet */
+    html.mobile-device .store-links .android-qr {
+      display: none !important;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .store-links .android-qr {
+        display: none !important;
+      }
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      .store-links .android-qr {
+        display: none !important;
       }
     }
   </style>
@@ -203,7 +232,6 @@
   <h2>Über die App</h2>
   <img src="point.PNG" class="icon" alt="Pachira – Punkte & Coupons Icon">
 
-  <!-- ✅ 여기만 변경 -->
   <p class="desc-left">
     <span class="title-green">Pachira – Punkte & Coupons</span><br>
     <span class="highlight-blue">Treuekarten, Gutscheine und digitale Geschenkkarten</span><br>
@@ -253,6 +281,7 @@
          onclick="gtag('event', 'download_android_de');">
         <img src="google.png" alt="Google Play">
       </a>
+
       <img src="pachiraand.png"
            alt="Pachira Android QR Code"
            class="android-qr">
