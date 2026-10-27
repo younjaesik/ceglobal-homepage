@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -150,6 +151,30 @@
       width: auto;
       display: block;
     }
+
+    /* Pachira Android QR - desktop only */
+    .android-download {
+      display: flex;
+      align-items: center;
+    }
+
+    .android-qr {
+      display: none;
+    }
+
+    @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+      .android-download {
+        gap: 16px;
+      }
+
+      .store-links .android-qr {
+        display: block;
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+    }
   </style>
 </head>
 
@@ -221,16 +246,24 @@
 <section>
   <h2>Herunterladen</h2>
   <div class="store-links">
-    <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
-       target="_blank"
-       onclick="gtag('event', 'download_android_de');">
-      <img src="google.png" alt="Google Play">
-    </a>
+
+    <div class="android-download">
+      <a href="https://play.google.com/store/apps/details?id=com.pointgifticon.mpas3"
+         target="_blank"
+         onclick="gtag('event', 'download_android_de');">
+        <img src="google.png" alt="Google Play">
+      </a>
+      <img src="pachiraand.png"
+           alt="Pachira Android QR Code"
+           class="android-qr">
+    </div>
+
     <a href="https://apps.apple.com/de/app/id6751176799"
        target="_blank"
        onclick="gtag('event', 'download_ios_de');">
       <img src="apple.png" alt="App Store">
     </a>
+
   </div>
 </section>
 
