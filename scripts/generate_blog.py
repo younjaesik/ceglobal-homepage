@@ -156,7 +156,7 @@ ARTICLE STRUCTURE
 SEARCH QUALITY
 
 Use a descriptive title matching the topic.
-Write a natural meta description under 160 characters.
+Write a natural meta description of 120-145 characters, including spaces.
 Use meaningful headings.
 Avoid keyword stuffing and repetitive SEO phrases.
 Do not invent author credentials or external references.
@@ -171,6 +171,12 @@ Return ONLY a valid JSON object with exactly these keys:
 
 article_html must use only:
 h2, h3, p, ul, ol, li, strong, em
+
+MANDATORY OUTPUT RULES:
+- Mention the exact name RecallNote naturally in the article body at least once.
+- Keep description at most 145 characters including spaces.
+- Never output <br>, <br/>, <br />, or any HTML tag outside the allowed list.
+- Use separate <p> paragraphs instead of HTML line breaks.
 
 Do not include:
 - h1
@@ -227,7 +233,7 @@ def validate_article(data):
         raise ValueError("Article title is too long.")
 
     if len(description) > 160:
-        raise ValueError("Meta description is too long.")
+        description = description[:157].rstrip(" ,;:-") + "..."
 
     plain_text = re.sub(r"<[^>]+>", " ", article)
     plain_text = html.unescape(plain_text)
@@ -240,7 +246,7 @@ def validate_article(data):
 
     if "RecallNote" not in plain_text:
         raise ValueError(
-            "Article does not mention RecallNote."
+            "Article body must mention the exact app name RecallNote at least once."
         )
 
     combined = title + " " + description + " " + plain_text
@@ -250,6 +256,9 @@ def validate_article(data):
             raise ValueError(
                 f"Potential unsupported feature: {pattern}"
             )
+
+    # Normalize harmless line-break tags before checking the strict allowlist.
+    article = re.sub(r"<\s*br\s*/?\s*>", "</p><p>", article, flags=re.I)
 
     tags = re.findall(
         r"<\s*/?\s*([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>",
@@ -284,7 +293,9 @@ for attempt in range(1, MAX_ARTICLE_ATTEMPTS + 1):
         "Follow all accuracy, structure and formatting rules. "
         "RecallNote supports spaced repetition with revision cards. "
         "You may describe spaced repetition as a supported feature. "
-        "Do not invent unrelated features or claim exact forgetting-time prediction."
+        "Do not invent unrelated features or claim exact forgetting-time prediction. "
+        "Mention RecallNote in the article body. Keep the meta description under 145 characters. "
+        "Do not use br tags; use p tags for paragraphs."
     )
     if validation_feedback:
         request_text += (
