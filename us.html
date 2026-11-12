@@ -166,6 +166,63 @@
       height: 100%;
       border: 0;
     }
+        /* QR codes: hidden by default */
+    .desktop-qr {
+      display: none !important;
+    }
+
+    /* Desktop download links */
+    .app-downloads {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0 6px;
+    }
+
+    .app-downloads a {
+      white-space: nowrap;
+    }
+
+    .app-download-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Desktop only: display QR codes */
+    @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+      .desktop-qr {
+        display: block !important;
+        width: 100px !important;
+        height: 100px !important;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .store-row .desktop-qr {
+        position: absolute;
+        left: 290px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .wallet-download {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .app-download-item {
+        gap: 12px;
+      }
+
+      .app-downloads {
+        gap: 12px 16px;
+      }
+    }
+
+
+    
   </style>
 </head>
 
