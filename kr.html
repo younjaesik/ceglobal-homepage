@@ -197,6 +197,62 @@
     .lang-menu a:hover {
       text-decoration: underline;
     }
+        /* 추가 앱 다운로드 및 PC 전용 QR */
+    .desc-left {
+      text-align: left !important;
+    }
+
+    .desktop-qr {
+      display: none !important;
+    }
+
+    .app-downloads {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0 6px;
+    }
+
+    .app-downloads a {
+      white-space: nowrap;
+    }
+
+    .app-download-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    @media screen and (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+      html:not(.mobile-device) .desktop-qr {
+        display: block !important;
+        width: 100px !important;
+        height: 100px !important;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .wallet-download {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .app-download-item {
+        gap: 12px;
+      }
+
+      .app-downloads {
+        gap: 12px 16px;
+      }
+    }
+
+    html.mobile-device .desktop-qr {
+      display: none !important;
+    }
+
+
+    
   </style>
 </head>
 
@@ -309,6 +365,219 @@
         </a>
       </p>
     </section>
+
+    <!-- Pachira Wallet -->
+<section>
+  <h2>🛍️ Pachira Wallet – 파키라의 확장 버전</h2>
+
+  <div class="desc-left" style="font-size: 19px; line-height: 1.8;">
+
+    <img src="pachira_wallet_ad.png" alt="Pachira Wallet"
+         style="width: 100%; max-width: 500px; height: auto; margin: 15px 0; border-radius: 12px;"><br>
+
+    <strong style="font-size: 25px;">Pachira Wallet</strong><br>
+
+    파키라의 기능을 확장한 앱입니다!<br>
+    멤버십 카드와 쿠폰부터 일상적인 할 일까지
+    하나의 앱에서 편리하게 관리하세요.<br><br>
+
+    ✍️ 손글씨, 📸 사진, 📝 텍스트를 활용한
+    To Buy · To Do 목록 관리<br>
+
+    ⏰ 쇼핑 목록과 일상적인 할 일 알림 기능<br><br>
+
+    <div class="wallet-download">
+      <a href="https://play.google.com/store/apps/details?id=com.ceglobal.pachirawallet"
+         target="_blank" rel="noopener noreferrer"
+         style="font-size: 21px; font-weight: bold;">
+        📲 Google Play에서 Pachira Wallet 다운로드
+      </a>
+
+      <img src="pachirawallet.png"
+           alt="Pachira Wallet QR코드"
+           class="desktop-qr">
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CEglobal의 다른 앱 -->
+<section>
+
+  <h2 style="font-size: 30px; color: #004080; font-weight: bold; border-bottom: 3px solid #004080; padding-bottom: 10px;">
+    CEglobal의 다른 앱
+  </h2>
+
+
+  <!-- RecallNote -->
+  <div class="desc-left" style="font-size: 19px; line-height: 1.8; margin-bottom: 40px;">
+
+    <strong style="font-size: 25px;">📚 RecallNote – 리콜노트</strong><br>
+
+    <img src="recallnote_ad.png" alt="RecallNote"
+         style="width: 100%; max-width: 500px; height: auto; margin: 15px 0; border-radius: 12px;"><br>
+
+    <div style="width: 100%; max-width: 315px; margin: 15px 0;">
+      <iframe width="315" height="560"
+        src="https://www.youtube.com/embed/M4eEfm2yzN0"
+        title="RecallNote YouTube Shorts"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="width: 100%; border-radius: 12px;">
+      </iframe>
+    </div>
+
+    공부한 내용을 더 오래 기억할 수 있도록 도와주는 복습 앱입니다.<br>
+    플래시카드, PDF 필기, 스마트 복습 기능으로
+    학습 내용을 효율적으로 관리하세요.<br>
+
+    <div class="app-downloads">
+
+      <span class="app-download-item">
+        <a href="https://apps.apple.com/kr/app/id6779927785"
+           target="_blank" rel="noopener noreferrer">
+          App Store (iOS / Mac)
+        </a>
+        <img src="recallnoteios.png"
+             alt="리콜노트 iOS QR코드"
+             class="desktop-qr">
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://play.google.com/store/apps/details?id=com.pachira.recallnote"
+           target="_blank" rel="noopener noreferrer">
+          Google Play (Android)
+        </a>
+        <img src="recallnoteand.png"
+             alt="리콜노트 Android QR코드"
+             class="desktop-qr">
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://apps.microsoft.com/detail/9P3MRK8KNDL8"
+           target="_blank" rel="noopener noreferrer">
+          Microsoft Store (Windows)
+        </a>
+      </span>
+
+    </div>
+  </div>
+
+
+  <!-- PicPost EZ -->
+  <div class="desc-left" style="font-size: 19px; line-height: 1.8;">
+
+    <strong style="font-size: 25px;">📸 PicPost EZ – 픽포스트 이지</strong><br>
+
+    <img src="picpost_ad.png" alt="PicPost EZ"
+         style="width: 100%; max-width: 500px; height: auto; margin: 15px 0; border-radius: 12px;"><br>
+
+    <div style="width: 100%; max-width: 315px; margin: 15px 0;">
+      <iframe width="315" height="560"
+        src="https://www.youtube.com/embed/2J_d-5Lh4H0"
+        title="PicPost EZ YouTube Shorts"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="width: 100%; border-radius: 12px;">
+      </iframe>
+    </div>
+
+    사진 촬영부터 메모, 알림, 위치 저장, SNS 공유까지 하나의 앱으로!<br><br>
+
+    📸 사진을 촬영하고 사진마다 생각과 느낌을 기록하세요.<br>
+
+    📝 사진별 메모는 입력하는 즉시 자동 저장됩니다.<br>
+
+    📍 사진을 찍은 장소나 기억하고 싶은 위치를 저장할 수 있습니다.<br>
+
+    ⏰ 사진에 알림을 설정하고, 완료 버튼을 누를 때까지
+    미완료 상태로 관리할 수 있습니다.<br>
+
+    🧵 Threads 등 SNS에 사진과 메모를 간편하게 공유하세요.<br><br>
+
+    <div class="app-downloads">
+
+      <span class="app-download-item">
+        <a href="https://apps.apple.com/kr/app/id6821620482"
+           target="_blank" rel="noopener noreferrer">
+          App Store (iOS)
+        </a>
+        <img src="picpostEZios.png"
+             alt="픽포스트 이지 iOS QR코드"
+             class="desktop-qr">
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://play.google.com/store/apps/details?id=com.pachira.picpost"
+           target="_blank" rel="noopener noreferrer">
+          Google Play (Android)
+        </a>
+        <img src="picpostEZand.png"
+             alt="픽포스트 이지 Android QR코드"
+             class="desktop-qr">
+      </span>
+
+    </div>
+  </div>
+
+
+  <!-- GuideCast -->
+  <div class="desc-left" style="font-size: 19px; line-height: 1.8; margin-top: 45px;">
+
+    <strong style="font-size: 25px;">
+      🎧 GuideCast – 무선 관광 가이드 시스템
+    </strong><br><br>
+
+    <img src="GuideCastimg.png"
+         alt="GuideCast 무선 관광 가이드 시스템"
+         style="width: 100%; max-width: 500px; height: auto; margin: 15px 0; border-radius: 12px;"><br>
+
+    스마트폰을 무선 관광 가이드 수신기로 활용하세요!<br><br>
+
+    🎤 가이드 한 명이 설명하면 수십 명의 관광객이 동시에 실시간으로 들을 수 있습니다.<br><br>
+
+    📱 아이폰과 안드로이드 스마트폰을 하나의 그룹에서 함께 사용할 수 있습니다.<br><br>
+
+    📡 인터넷 연결, 모바일 데이터, 외부 서버 없이 로컬 Wi-Fi로 작동합니다.<br><br>
+
+    🎧 관광객은 자신의 스마트폰과 이어폰으로 가이드의 설명을 듣습니다.<br><br>
+
+    🔋 휴대용 Wi-Fi 라우터와 고용량 보조배터리를 사용합니다.
+    일체형 장비도 사용할 수 있습니다.<br><br>
+
+    💡 기존 RF 관광 가이드 수신기를 대체할 수 있는 앱 기반 시스템입니다.<br><br>
+
+    <div class="app-downloads">
+
+      <span class="app-download-item">
+        <a href="https://apps.apple.com/kr/app/guidecast-wifi/id6770045066"
+           target="_blank" rel="noopener noreferrer">
+          App Store (iOS)
+        </a>
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://play.google.com/store/apps/details?id=com.guidetour.myapplication.ui.guide&amp;hl=ko"
+           target="_blank" rel="noopener noreferrer">
+          Google Play (Android)
+        </a>
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+    
 
   </main>
 
