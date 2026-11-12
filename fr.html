@@ -97,6 +97,63 @@
       display:flex; justify-content:center; flex-wrap:wrap; gap:12px;
     }
     .lang-menu a { text-decoration:none; color:#004080; }
+
+        /* Additional app downloads */
+    .desc-left {
+      text-align: left !important;
+    }
+
+    .desktop-qr {
+      display: none !important;
+    }
+
+    .app-downloads {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0 6px;
+    }
+
+    .app-downloads a {
+      white-space: nowrap;
+    }
+
+    .app-download-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    @media screen and (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+      html:not(.mobile-device) .desktop-qr {
+        display: block !important;
+        width: 100px !important;
+        height: 100px !important;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .wallet-download {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .app-download-item {
+        gap: 12px;
+      }
+
+      .app-downloads {
+        gap: 12px 16px;
+      }
+    }
+
+    html.mobile-device .desktop-qr {
+      display: none !important;
+    }
+
+
+    
   </style>
 </head>
 
