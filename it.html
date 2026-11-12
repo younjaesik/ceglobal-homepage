@@ -196,6 +196,63 @@
     .lang-menu a:hover {
       text-decoration: underline;
     }
+
+        /* Additional app downloads */
+    .desc-left {
+      text-align: left !important;
+    }
+
+    .desktop-qr {
+      display: none !important;
+    }
+
+    .app-downloads {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0 6px;
+    }
+
+    .app-downloads a {
+      white-space: nowrap;
+    }
+
+    .app-download-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    @media screen and (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+      html:not(.mobile-device) .desktop-qr {
+        display: block !important;
+        width: 100px !important;
+        height: 100px !important;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .wallet-download {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .app-download-item {
+        gap: 12px;
+      }
+
+      .app-downloads {
+        gap: 12px 16px;
+      }
+    }
+
+    html.mobile-device .desktop-qr {
+      display: none !important;
+    }
+
+
+    
   </style>
 </head>
 
@@ -286,6 +343,204 @@
 
       </div>
     </section>
+
+    <!-- Pachira Wallet -->
+<section>
+  <h2>🛍️ Pachira Wallet – Versione avanzata</h2>
+
+  <div class="desc-left" style="font-size: 19px; line-height: 1.8;">
+
+    <img src="pachira_wallet_ad.png" alt="Pachira Wallet"
+         style="width: 100%; max-width: 500px; height: auto; margin: 15px 0; border-radius: 12px;"><br>
+
+    <strong style="font-size: 25px;">Pachira Wallet</strong><br>
+
+    La versione avanzata di Pachira!<br>
+    Gestisci carte fedeltà, coupon e attività quotidiane
+    comodamente in un'unica app.<br><br>
+
+    ✍️ Scrittura a mano, 📸 foto e 📝 testo
+    per le tue liste della spesa e delle cose da fare.<br>
+
+    ⏰ Promemoria per gli acquisti e le attività quotidiane.<br><br>
+
+    <div class="wallet-download">
+      <a href="https://play.google.com/store/apps/details?id=com.ceglobal.pachirawallet"
+         target="_blank" rel="noopener noreferrer"
+         style="font-size: 21px; font-weight: bold;">
+        📲 Scarica Pachira Wallet su Google Play
+      </a>
+
+      <img src="pachirawallet.png"
+           alt="Codice QR Pachira Wallet"
+           class="desktop-qr">
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Altre app -->
+<section>
+
+  <h2 style="font-size: 30px; color: #004080; font-weight: bold; border-bottom: 3px solid #004080; padding-bottom: 10px;">
+    Altre app di CEglobal
+  </h2>
+
+
+  <!-- RecallNote -->
+  <div class="desc-left" style="font-size: 19px; line-height: 1.8; margin-bottom: 40px;">
+
+    <strong style="font-size: 25px;">📚 RecallNote</strong><br>
+
+    <img src="recallnote_ad.png" alt="RecallNote"
+         style="width: 100%; max-width: 500px; height: auto; margin: 15px 0; border-radius: 12px;"><br>
+
+    <div style="width: 100%; max-width: 315px; margin: 15px 0;">
+      <iframe width="315" height="560"
+        src="https://www.youtube.com/embed/tBTau1Kmeys"
+        title="RecallNote YouTube Shorts"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="width: 100%; border-radius: 12px;">
+      </iframe>
+    </div>
+
+    Schede di ripasso, annotazioni sui PDF e strumenti intelligenti per lo studio e il ripasso.<br>
+
+    <div class="app-downloads">
+
+      <span class="app-download-item">
+        <a href="https://apps.apple.com/it/app/id6779927785"
+           target="_blank" rel="noopener noreferrer">
+          App Store (iOS / Mac)
+        </a>
+        <img src="recallnoteios.png"
+             alt="Codice QR RecallNote iOS"
+             class="desktop-qr">
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://play.google.com/store/apps/details?id=com.pachira.recallnote"
+           target="_blank" rel="noopener noreferrer">
+          Google Play (Android)
+        </a>
+        <img src="recallnoteand.png"
+             alt="Codice QR RecallNote Android"
+             class="desktop-qr">
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://apps.microsoft.com/detail/9P3MRK8KNDL8"
+           target="_blank" rel="noopener noreferrer">
+          Microsoft Store (Windows)
+        </a>
+      </span>
+
+    </div>
+  </div>
+
+
+  <!-- PicPost EZ -->
+  <div class="desc-left" style="font-size: 19px; line-height: 1.8;">
+
+    <strong style="font-size: 25px;">📸 PicPost EZ</strong><br>
+
+    <img src="picpost_ad.png" alt="PicPost EZ"
+         style="width: 100%; max-width: 500px; height: auto; margin: 15px 0; border-radius: 12px;"><br>
+
+    <div style="width: 100%; max-width: 315px; margin: 15px 0;">
+      <iframe width="315" height="560"
+        src="https://www.youtube.com/embed/923LosBvUgg"
+        title="PicPost EZ YouTube Shorts"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="width: 100%; border-radius: 12px;">
+      </iframe>
+    </div>
+
+    Scatta foto, aggiungi note e condividi tutto facilmente.<br>
+    Salva i luoghi, imposta promemoria e conserva i tuoi ricordi in un'unica app.<br>
+
+    <div class="app-downloads">
+
+      <span class="app-download-item">
+        <a href="https://apps.apple.com/it/app/id6821620482"
+           target="_blank" rel="noopener noreferrer">
+          App Store (iOS)
+        </a>
+        <img src="picpostEZios.png"
+             alt="Codice QR PicPost EZ iOS"
+             class="desktop-qr">
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://play.google.com/store/apps/details?id=com.pachira.picpost"
+           target="_blank" rel="noopener noreferrer">
+          Google Play (Android)
+        </a>
+        <img src="picpostEZand.png"
+             alt="Codice QR PicPost EZ Android"
+             class="desktop-qr">
+      </span>
+
+    </div>
+  </div>
+
+
+  <!-- GuideCast -->
+  <div class="desc-left" style="font-size: 19px; line-height: 1.8; margin-top: 45px;">
+
+    <strong style="font-size: 25px;">
+      🎧 GuideCast – Sistema di audioguida wireless
+    </strong><br><br>
+
+    <img src="GuideCastimg.png"
+         alt="GuideCast – Sistema di audioguida wireless"
+         style="width: 100%; max-width: 500px; height: auto; margin: 15px 0; border-radius: 12px;"><br>
+
+    Trasforma gli smartphone in un sistema di audioguida wireless per gruppi turistici!<br><br>
+
+    🎤 Una guida parla e decine di turisti ascoltano in tempo reale.<br><br>
+
+    📱 Compatibile con iPhone e dispositivi Android nello stesso gruppo.<br><br>
+
+    📡 Non richiede connessione Internet, dati mobili o server esterni.<br><br>
+
+    🎧 I turisti ascoltano utilizzando il proprio smartphone e gli auricolari.<br><br>
+
+    🔋 Richiede un router Wi-Fi portatile e un power bank ad alta capacità.
+    In alternativa, è possibile utilizzare un dispositivo tutto-in-uno.<br><br>
+
+    💡 Un'alternativa ai tradizionali ricevitori RF utilizzati nelle visite guidate.<br><br>
+
+    <div class="app-downloads">
+
+      <span class="app-download-item">
+        <a href="https://apps.apple.com/it/app/guidecast-wifi/id6770045066"
+           target="_blank" rel="noopener noreferrer">
+          App Store (iOS)
+        </a>
+      </span>
+
+      <span class="app-download-item">
+        <span>|</span>
+        <a href="https://play.google.com/store/apps/details?id=com.guidetour.myapplication.ui.guide&amp;hl=it"
+           target="_blank" rel="noopener noreferrer">
+          Google Play (Android)
+        </a>
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
 
     <section>
       <h2>Contatto</h2>
